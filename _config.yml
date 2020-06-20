@@ -1,0 +1,30 @@
+# Permalinks
+plugins: [jekyll-paginate]
+permalink: /:title
+paginate: 6
+paginate_path: /blog/page:num/
+
+# Setup
+title: hankyeolk_개발 공부
+baseurl: ""
+url: "https://hankyeolk.github.io"
+
+# Assets
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+# Build settings
+markdown: kramdown
+
+# About
+author:
+  name: hankyeolk
+  url: https://hankyeolk.github.io/
+  email: ddovlek@kakao.com
+  github: hankyeolk
+
+# Custom vars
+version: 1.0.0
+github:
+  repo: https://github.com/hankyeolk/hankyeolk.github.io

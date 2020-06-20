@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body> 
+      {% assign current = page.url | downcase | split: '/' %}
+      <nav class="nav">
+        <div class="nav-container">
+            <ul>
+                <li class="transition">
+                    <a href="{{ '' | prepend: site.baseurl }}/" {% if current[1] == "TIL" or current[1] == "문제풀이" %} class="normal" {% endif %} class="active">About</a>
+                </li>
+                <li class="transition">
+                    <a href="{{ '/TIL' | prepend: site.baseurl }}" {% if current[1] == "TIL" %} class="active"{% endif %} >TIL</a>
+                </li>
+                <li class="transition">
+                    <a href="{{ '/solution' | prepend: site.baseurl }}" {% if current[1] == "문제풀이" %} class="active"{% endif %} >문제풀이</a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+    
+    {% if page.post-header == true %}
+        {% include post-header.html %}
+    {% endif %}
+    {% if page.project-header == true %}
+        {% include project-header.html %}
+    {% endif %}
+      
+    <main>
+      {{ content }}
+     
+      </main>
+
+      {% include footer.html %}
+      
+  </body>
+</html> 
