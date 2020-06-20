@@ -79,6 +79,8 @@ footer {
   color: $black;
   border-top: 1px solid $grey-2;
   border-bottom: 1px solid $grey-2;
+  position: absolute;
+  width: 100%;
 
   .footer_wrap {
     font-style: normal;
@@ -91,6 +93,8 @@ footer {
         font-size: 20px;
         font-weight: 600;
         margin-bottom: 4px;
+        display: block;
+        padding-bottom: 3px;
       }
       .email {
         font-size: 16px;
