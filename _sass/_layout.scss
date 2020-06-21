@@ -99,6 +99,8 @@ footer {
       .email {
         font-size: 16px;
         color: $black;
+        display: block;
+        margin-bottom: 3px;
       }
 
       a.email:hover {
