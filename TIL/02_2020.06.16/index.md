@@ -3,7 +3,7 @@ layout: post
 title: "TIL 2일차"
 subtitle: "코드스테이츠 Full Pre 5기 과정을 시작하면서"
 type: "TIL"
-createDate: "2020-06-15"
+createDate: "2020-06-16"
 til: true
 text: true
 author: "hankyeolk"

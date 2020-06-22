@@ -3,7 +3,7 @@ layout: post
 title: "TIL 4일차"
 subtitle: ""
 type: "TIL"
-createDate: "2020-06-15"
+createDate: "2020-06-18"
 til: true
 text: true
 author: "hankyeolk"
