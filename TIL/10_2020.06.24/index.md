@@ -40,7 +40,6 @@ let divTag = tagMaker(div);
 divTag("we like to party"); // -> <div>we like to party</div>
 ```
 <br>
-
 - 클로저 모듈 : 함수 내부에서 변수를 스코프에 가두어 함수 밖으로 노출 시키지 않는다. 모듈의 패턴이기 때문에 함수를 재사용 하는 것이 쉽고, 변수간 충돌이 없다.
 
 ```jsx
@@ -61,8 +60,9 @@ function makeCounter() {
 }
 ```
 
+
 ---
-<br>
+
 - 클래스 정의와 인스턴스의 속성 생성, new 키워드를 활용한 인스턴스 생성, 메소드 적용하기까지!
 <br>
 
@@ -91,7 +91,7 @@ avante.brand = 'hyundai'
 // 메소드 실행
 avante.drive()
 ```
-<bt>
+<br>
 
 `ES6 문법`
 ```js
