@@ -1,6 +1,6 @@
 pre,
 code {
-  font-family: $san-serif;
+  font-family: $spoqa;
 }
 
 code {
@@ -25,9 +25,9 @@ pre code {
 }
 
 .highlight {
-  background-color: $grey-3;
-  // border: 1px solid $grey-2-70;
-  border-radius: 3px;
+  background-color: #363a3c;
+  border: none;
+  border-radius: 4px;
   line-height: 1.4;
   margin: 0 0 1rem;
   padding: 0.5rem;
@@ -35,8 +35,12 @@ pre code {
   font-weight: 500;
 
   pre {
+    padding: 25px 35px;
     margin-bottom: 0;
     overflow-x: auto;
+    font-size: 90%;
+    line-height: 1.5;
+    
   }
 
   .lineno {

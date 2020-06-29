@@ -79,13 +79,13 @@
   color: #f60;
 } /* Literal.Number */
 .highlight .s {
-  color: $purple;
+  color: #97c279;
 } /* Literal.String */
 .highlight .n {
   color: $black;
 } /* Literal.String */
 .highlight .na {
-  color: #cd5bee;
+  color: #d19965;
 } /* Name.Attribute */
 .highlight .nb {
   color: #366;
@@ -115,7 +115,7 @@
   color: #0cf;
 } /* Name.Namespace */
 .highlight .nt {
-  color: #00afba;
+  color: #df6b75;
 } /* Name.Tag */
 .highlight .nv {
   color: #033;
@@ -196,3 +196,4 @@
 .css .nt + .nt {
   color: #999;
 }
+
