@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body> 
-      {% assign current = page.url | downcase | split: '/' %}
-      <nav class="nav">
+<body>
+    {% assign current = page.url | downcase | split: '/' %}
+    <nav class="nav">
         <div class="nav-container">
             <ul>
                 <li class="transition">
-                    <a href="{{ '' | prepend: site.baseurl }}/" {% if current[1] == "til" or current[1] == "algorithm" %} class="normal" {% endif %} class="active">About</a>
+                    <a href="{{ '' | prepend: site.baseurl }}/"
+                        {% if current[1] == "til" or current[1] == "algorithm" or current[1] == "javascript"%}
+                        class="normal" {% endif %} class="active">About</a>
                 </li>
                 <li class="transition">
-                    <a href="{{ '/TIL' | prepend: site.baseurl }}" {% if current[1] == "til" %} class="active"{% endif %} >TIL</a>
+                    <a href="{{ '/TIL' | prepend: site.baseurl }}" {% if current[1] == "til" %} class="active"
+                        {% endif %}>TIL</a>
                 </li>
                 <li class="transition">
-                    <a href="{{ '/algorithm' | prepend: site.baseurl }}" {% if current[1] == "algorithm" %} class="active"{% endif %} >Algorithm</a>
+                    <a href="{{ '/algorithm' | prepend: site.baseurl }}" {% if current[1] == "algorithm" %}
+                        class="active" {% endif %}>Algorithm</a>
+                </li>
+                <li class="transition">
+                    <a href="{{ '/javascript' | prepend: site.baseurl }}" {% if current[1] == "javascript" %}
+                        class="active" {% endif %}>Javascript</a>
                 </li>
             </ul>
         </div>
-      </nav>
-    
+    </nav>
+
     {% if page.post-header == true %}
-        {% include post-header.html %}
+    {% include post-header.html %}
     {% endif %}
     {% if page.project-header == true %}
-        {% include project-header.html %}
+    {% include project-header.html %}
     {% endif %}
-      
-    <main>
-      {{ content }}
-     
-      </main>
 
-      {% include footer.html %}
-      
-  </body>
-</html> 
+    <main>
+        {{ content }}
+
+    </main>
+
+    {% include footer.html %}
+
+</body>
+
+</html>
