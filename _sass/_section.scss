@@ -38,9 +38,9 @@ section.explanation {
   }
   p.intro-p {
     font-family: $san-serif;
-    font-size: 20px;
-    font-weight: 700;
-    padding-top: 10px;
+    font-size: 16px;
+    // font-weight: 700;
+    padding: 10px;
   }
   a.intro-a {
     display: inline-block;
@@ -62,8 +62,8 @@ section.explanation {
     line-height: 1.4;
     word-wrap: normal;
     margin: 50px 0 0 0;
-    // color: $dip-grin;
-    border-bottom: 1px solid $grey-5;
+    color: $purple;
+    // border-bottom: 1px solid $grey-5;
     @media (max-width: $break-small) {
       font-size: 24px;
     }
