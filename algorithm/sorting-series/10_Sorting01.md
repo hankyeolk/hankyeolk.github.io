@@ -2,7 +2,7 @@
 layout: post
 title: "자바스크립트로 정렬하기"
 subtitle: "삽입, 합병, 버블, 선택 정렬에 대해서"
-type: "Javascript"
+type: "정렬 시리즈"
 createDate: "2020-07-17"
 solution: true
 text: true
