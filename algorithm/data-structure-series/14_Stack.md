@@ -104,6 +104,8 @@ class Stack {
 
 ### 일상생활 속 줄 세우기 개념, 큐(Queue)
 
+![queue](https://miro.medium.com/max/1196/1*PMYRFmVecFT61P4aAh0g1g.png)
+
 - 가장 먼저 들어온 데이터가 가장 먼제 밖으로 나온다. FIFO 방식 (First In First Out)
 - 배열에서 push 하고, shift로 꺼내는 방식 > 큐 개념에서는 enqueue, dequeue라고 한다.
 - 가장 앞의 값을 알 수 있는 front가 있다.
