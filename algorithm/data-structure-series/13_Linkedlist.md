@@ -26,19 +26,21 @@ order: 13
 <br>
 
 ```js
-const Linkedlist = (function() {
-   function Linkedlist() {
-      this.length = 0; // 배열처럼 길이 요소가 있다.
+class Node {
+   constructor(data, next) {
+      this.data = data;
+      this.next = null;
+   }
+}
+
+class Linkedlist {
+   constructor(length, head) {
+      this.length = 0;
       this.head = null;
    }
 
-   function Node(data) {
-      this.data = data;
-      this.next = null; // 처음 정의될 때에는 다음 요소가 정해지지 않았다.
-   }
-
-   return Linkedlist;
-})();
+   // 앞으로 여기에 메소드를 하나씩 만들어 갈 예정
+}
 ```
 <br>
 
@@ -54,28 +56,20 @@ const Linkedlist = (function() {
 <br>
 
 ```js
-   Linkedlist.prototype.push = function(value) {
-      // 우선 가장 먼저 새로운 노드를 만든다.
-      let node = new Node(value)
-      
-      // 현재 연결성을 head로 지정해준다.
+   push(value) {
       let current = this.head;
-      
-      // head에 새로 생성한 노드가 연결되지 않았으면 연결시키고 길이를 키워준다.
+      let node = new Node(value)
+
       if (!current) {
          this.head = node;
          this.length += 1;
          return node;
       } else {
-         // 연결된 노드가 있다면 마지막 노드를 찾고, 그 다음에 값을 넣는다.
-         while(current.next) {
-            current = current.next
+         while (current.next) {
+         current = current.next;
          }
 
-         // while문을 다 돌고 나면 마지막 current.next = null 이다.
-         // 마지막 위치에 노드를 연결          
          current.next = node;
-        
          this.length += 1;
          return node;
       }
@@ -92,16 +86,15 @@ const Linkedlist = (function() {
 <br>
 
 ```js
-   Linkedlist.prototype.search = function(idx) {
+   search(idx) {
       let current = this.head;
       let count = 0;
 
-      // idx 만큼 current의 값을 next로 이동해간다.
       while (count < idx) {
          current = current.next
-         count += 1
+         count += 1;
       }
-      // count === idx 가 되면
+
       return current.data;
    }
 ```
@@ -116,7 +109,7 @@ const Linkedlist = (function() {
 <br>
 
 ```js
-   Linkedlist.prototype.remove = function(idx) {
+   remove(idx) {
       let current = this.head;
       let before, remove;
       let count = 0;
@@ -150,3 +143,8 @@ const Linkedlist = (function() {
 <br>
 
 이해하기가 참 쉽지 않다. 이 부분은 ES6 문법인 class 키워드를 사용해서 해결할 수 있을 것 같다. 그래서 도전할 생각이다. 정말 쉬운것이 하나도 없다. 
+<br>
+
+*수정_2020.07.17.오후 5시 29분*
+<br>
+위의 코드들을 class 를 이용한 ES6 문법으로 수정했다.
