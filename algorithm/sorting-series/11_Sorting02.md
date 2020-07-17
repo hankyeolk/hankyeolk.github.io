@@ -17,7 +17,6 @@ order: 11
 [ZeroCho님 블로그 방문하기](https://www.zerocho.com/category/Algorithm/post/57e22a778d6bcf0015231c8b)
 <br>
 
-### 01. 요소들을 하나하나 비교하여 작은 숫자를 앞으로, 삽입정렬
 
 ![quick sorting](https://gmlwjd9405.github.io/images/algorithm-quick-sort/quick-sort-concepts.png)
 
