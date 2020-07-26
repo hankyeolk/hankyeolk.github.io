@@ -52,7 +52,7 @@ order: 17
 
 ### 키와 값을 쌍으로. 암호화에 사용되는 해시테이블
 
-[내가 이전에 정리한 해시테이블 블로그 보러가기](hankyeolk.github.io/algorithm/data-structure-series/16_HashTree)
+[내가 이전에 정리한 해시테이블 블로그 보러가기](https://hankyeolk.github.io/algorithm/data-structure-series/16_HashTree)
 
 - 데이터를 키와 값의 쌍으로 저장한다. 여기서 키는 해싱함수를 통과하게 되고, 암호화된 코드로 변환된다.
 - 두 개 이상의 값에 하나의 키를 사용할 수 없다.
