@@ -21,14 +21,25 @@ layout: default
       {{ page.subtitle }}
     </h2>
   </div>
-  <!-- {% assign post = page %} {% if post.tags.size > 0 %} {% capture tags_content
-  %}Tags{% if post.tags.size == 1 %}<i class="fa fa-tag"></i>{% else %}<i
-    class="fa fa-tags"
-  ></i
-  >{% endif %}: {% endcapture %} {% for post_tag in post.tags %} {% for data_tag
-  in site.data.tags %} {% if data_tag.slug == post_tag %} {% assign tag =
-  data_tag %} {% endif %} {% endfor %} {% if tag %} {% capture tags_content_temp
-  %}<a href="/tags//"></a>{% if forloop.last == false %}, {% endif %}{%
-  endcapture %} {% assign tags_content = tags_content_temp %} {% endif %} {%
-  endfor %} {% else %} {% assign tags_content = '' %} {% endif %} -->
+
+  <!-- {% if page.portfolio == true %}
+    <article class="portfolio-info">
+        <section>
+            <span class="portfolio-property">{{ page.role-title }}</span>
+            <p class="info-small">{{ page.role }}</p>
+        </section>
+        <section>
+            <p>{{ page.duration }}</p>
+        </section>    
+    </article>
+    {% endif %} -->
+
+  {{ content }} {% if page.draft == true %}
+  <div class="catalogue-draft-message">
+    <h1>
+      &#x1F64B; Coming Soon!
+    </h1>
+    현재 열심히 글을 쓰고 있어요. 조금만 기다려주세요!
+  </div>
+  {% endif %}
 </div>
