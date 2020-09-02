@@ -1,8 +1,10 @@
 # Permalinks
 plugins: [jekyll-paginate]
+gems:
+  - jekyll-pagination
 permalink: /:title
-paginate: 6
-paginate_path: /blog/page:num/
+paginate: 8
+paginate_path: /page:num/
 
 # Setup
 title: hankyeolk_개발 공부
