@@ -37,7 +37,11 @@
     {% endif %}
 
     <main>
-        {{ content }}
+        {{ content | replace: '
+        <li>[ ]', '</li>
+        <li class="box">' | replace: '</li>
+        <li>[x]', '</li>
+        <li class="box_done">' }}
 
     </main>
 
