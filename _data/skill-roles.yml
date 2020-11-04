@@ -1,4 +1,10 @@
 - name: Javascript
-- name: Html/CSS
+- name: Typescript
 - name: React
+- name: React Hook
+- name: Redux
+- name: styled-components
+- name: Node.JS
+- name: Git/Github
+- name: Html/CSS
 - name: Vue.JS
