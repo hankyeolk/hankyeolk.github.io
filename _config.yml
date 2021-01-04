@@ -3,7 +3,7 @@ email: 2247han@gmail.com
 description: 웹 개발자 강한결의 개발 블로그입니다.
 author: hankyeolk
 baseurl: ""
-url: "https://dDDoublek.github.io"
+url: "https://hankyeolk.github.io"
 
 # Social Profiles
 github_username: hankyeolk
@@ -11,7 +11,7 @@ instagram_username: ddoublek.h
 rocket_username: 2247han
 
 # Add your google-analytics ID here to activate google analytics
-# google_analytics: UA-XXXXXXXXX-X # out your google-analytics code
+google_analytics: UA-134593008-1 # out your google-analytics code
 
 # Build settings
 markdown: kramdown
