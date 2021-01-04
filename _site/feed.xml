@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://dddoublek.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dddoublek.github.io/" rel="alternate" type="text/html" /><updated>2021-01-03T20:43:53+09:00</updated><id>https://dddoublek.github.io/feed.xml</id><title type="html">HK Blog</title><subtitle>웹 개발자 강한결의 개발 블로그입니다.</subtitle><author><name>hankyeolk</name></author><entry><title type="html">개발 블로그 변천사</title><link href="https://dddoublek.github.io/2021/01/03/blogPostReview.html" rel="alternate" type="text/html" title="개발 블로그 변천사" /><published>2021-01-03T00:00:00+09:00</published><updated>2021-01-03T00:00:00+09:00</updated><id>https://dddoublek.github.io/2021/01/03/blogPostReview</id><content type="html" xml:base="https://dddoublek.github.io/2021/01/03/blogPostReview.html">&lt;blockquote&gt;
+  &lt;p&gt;스압이 있을 것 같습니다. 🥴&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;오늘은 내가 개발 공부를 시작하면서 매일을 빠짐없이 적어갔던 블로그-정확하게 말하면 TIL을 기록하는 개발 일기장-의 변천사를 소개해보고자 한다. 왜 내가 기록을 시작했고, 어떤 채널을 통해서 기록했고, 기록을 통해서 어떤 것을 경험하고 얻었는지 등에 대해서 주저리를 떨어볼 생각이다. 하지만, 결론은 아마 동일할 것이다. &lt;strong&gt;개발을 시작한다면, 자신만의 블로그를 꼭 만들어 기록해보자!&lt;/strong&gt;라고.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px;margin-bottom: 40px&quot;&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;1-배운것을-그냥-정말-받아적고-외우는-형식의-기록&quot;&gt;1. 배운것을 그냥 정말 받아적고 외우는 형식의 기록.&lt;/h3&gt;
+
+&lt;p&gt;개발 공부를 막 시작했던 6월 중순, 코드스테이츠의 프리코스를 밟아가고 있었다. 자바스크립트라는 개발 언어와 익숙해지기 위해서 정말 많은 노력을 했다. 분명하게 영어 단어들로 구성이 되어있는데 컴퓨터에게 이해시키는 것이 어려웠다. 함수부터 메서드, 연산자 등은 너무 새로웠다. 그래서 그 시기의 블로그의 목적은 &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;&lt;b&gt;기억&lt;/b&gt;&lt;/mark&gt;이었다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래서 무식하게 그날 배운 것들을 다 블로그로 옮겨적고 반복해서 보았던 것 같다. 무식하다고 하기에는 효과가 좀 많이 좋았다. 고등학교 시절에도 적어가면서 공부를 하지 않으면 잘 기억으로 남지 않았다. 그래서 무엇이든 처음 배우는 것은 따라적고, 적으면서 기억하려고 했다. 이 시기의 블로그가 자바스크립트에 조금은 더 친해진 지금을 만들었다고 생각한다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210103/notionTil.png&quot; style=&quot;width: 100%; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;노션에 배운 것을 정말 매일 빠짐없이 기록했다. 그날 어떤 내용을 중점으로 배웠는지 라벨링을 했다. 실시간 세션에서 이해가 안되는 부분이 생기면, 엔지니어분의 말을 그대로 따라서 친 기억도 있다. 노션에 순간을 기록한 부분을 깃헙 페이지로 만든 블로그에 옮겨서 적었다. 물론, 이 블로그도 그냥 배운 것을 나열하는 것에 바빴다. 아마 &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;&lt;b&gt;복습&lt;/b&gt;&lt;/mark&gt;을 이 방법으로 한 것 같다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210103/first.png&quot; style=&quot;width: 100%; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px;margin-bottom: 55px&quot;&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;2-그러다가-til의-양식을-만들기로-결정했다&quot;&gt;2. 그러다가 TIL의 양식을 만들기로 결정했다.&lt;/h3&gt;
+
+&lt;p&gt;뭔가 기록을 더 기억으로 끄집어내고 싶었다. 그저 단지 배운 &lt;strong&gt;사실&lt;/strong&gt;을 기록하는 것이 아닌, 나만의 정리 방식으로 풀어가고 싶었다. 노션에 그날 배운 것을 실시간으로 기록하는 것은 그대로 진행했지만, 블로그에 옮기는 방식에 나름의 &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;체계(?)&lt;/mark&gt;를 갖췄다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210103/setTil.png&quot; style=&quot;width: 100%; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Today’s Key&lt;/strong&gt;라는 항목은 정말 말 그대로 오늘 배운 것 중에서 핵심이 되는 내용 또는 그날을 기억하기 위해서 꼭 기록해야 하는 것을 기록했다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;추가로 공부하자&lt;/strong&gt; 항목에는 배운 내용 중에서 검색이 더 필요한 부분이나, 정규 시간 이후에 모각코를 하면서 공부한 내용을 기록했다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;어떻게 보면 가장 좋았다고 생각하는 항목은 &lt;strong&gt;머리 뽀개기&lt;/strong&gt;였을 것이다. 말 그대로 어렵게 풀었던 알고리즘 문제나 이해가 어려운 개발 내용들(&lt;em&gt;예를 들어 처음 배울때의 리액트 라이브러리랄까?&lt;/em&gt;)을 적었다. 완전 내 방식으로 말이다. 이렇게. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210103/addError.png&quot; style=&quot;width: 100%; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;기록 방식에 나름의 체계를 구축하니 그날 배운 내용이 조금은 더 명료하게 보이기 시작했다. 그러면서 TIL이라고 하는 블로깅에 꼭 코드를 많이 집어 넣지 않아도 되겠다는 생각을 하게되었다. 그래서 TIL에는 최대한 그날의 감정을 적으면서 꼭 기록할 내용만 파악해서 적기로 마음 먹었다.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px;margin-bottom: 55px&quot;&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;3-나만의-개발-위키를-만들어보자&quot;&gt;3. 나만의 개발 위키를 만들어보자.&lt;/h3&gt;
+
+&lt;p&gt;TIL에 그날 겪은 감정을 적기 시작하면서 개발에 대한 내용이 조금씩 빈약해진다고 생각했다. 그리고 개발 공부 뒤로 갈수록 프리코스의 자바스크립트 문법 이상의 것들이 많이 나왔다. 그래서 개발 내용 (코드를 진득하게 포함한)을 기록하는 페이지를 만드는 것에 필요성이 강해졌다. 이전 회사에서 내가 작성한 문서들을 정리했던 노션 페이지를 떠올렸고, 노션에 (조금 오글거리지만) &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;&lt;b&gt;강한결, 개발자로 성장하기&lt;/b&gt;&lt;/mark&gt;라는 페이지를 만들었다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;자바스크립트 항목을 시작으로 Node.js의 모듈을 기록하기도 하고, React 라이브러리를 배우면서 컴포넌트 작성하는 방식을 코드와 함께 기록했다. 이 위키는 정말 공을 들였다. 개발을 하면서 두고두고 계속해서 볼 내용들을 기록하고 있었기 때문이다. 나중에 또 보려면 명확한 인덱스가 있어야 하고, 내가 이해하기 쉽게 풀어적어야 했다. 그래서 각 스택별로 인덱싱을 하고 많은 래퍼런스를 보면서 기록했다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210103/notionWiki.png&quot; style=&quot;width: 100%; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;요즘은 이 위키에 포스팅이 조금 주춤하다. 하지만, 수료 이후에 혼자서 공부한 내용들이 많기 때문에 다시 위키를 기록하기 시작할 것이다.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px;margin-bottom: 55px&quot;&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;4-블로그에-제목을-붙이고-to-do도-넣자&quot;&gt;4. 블로그에 제목을 붙이고 To-do도 넣자.&lt;/h3&gt;
+
+&lt;p&gt;깃헙 블로그에 매일 기록하는 TIL의 제목을 달기 시작했다. 큰 이유는 없었고 매일 날짜로만 기록되는 것이 보기 싫었던 것 같다. 그날 하루를 한 줄의 제목으로 정리한다는 점도 퍽 마음에 들었다. 제목을 정하기 위해서 그날 배운 것들 중 가장 중요한 것을 고르는 과정도 즐거웠다. 그날 느낀 감정을 적거나, 행동 중에서 가장 중요했던 것도 제목으로 남겼다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210103/addTitle.png&quot; style=&quot;width: 100%; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이머시브 코스 후반부에 접어들어서는 매일 쏟아지는 내용들에 허덕이지 않기 위해서 스케쥴 관리가 필요했다. 그래서 매일 아침 블로그에 To-do를 적었다. 그리고 하루를 마무리하는 시점에서 TIL의 To-do 리스트에 잘 진행한 것들을 체크했다. to-do 리스트는 프로젝트에서 정말 많은 도움이 되었다. 그날 꼭 작업해야 하는 부분을 우선 순위 높게 작성했다. 우선순위를 세우니 프로젝트 코드 작업에 효율이 높아지고, 실제로 집중이 더 잘 되었다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;파이널 프로젝트에는 밀려드는 조급함과 우울 증상을 극복하기 위해서 제일 상단에 &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;&lt;b&gt;&quot;조급하거나 답답한 감정이 느껴지면 크게 한 숨을 쉬고 다시 시작해보기&quot;&lt;/b&gt;&lt;/mark&gt;라는 문구를 적었다. 하루도 빠짐없이. 그래서 매일 눈을 뜨고, 작업을 시작하기 전에 숨을 크게 돌리는 시간을 가질 수 있었다.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px;margin-bottom: 55px&quot;&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;5-블로그-유목민-정착하나요&quot;&gt;5. 블로그 유목민 정착하나요?&lt;/h3&gt;
+
+&lt;p&gt;개발 공부는 내가 이 업을 삼을 기간동안 이어갈 예정이다. 그 말은 개발에 대한 기록을 계속적으로 이어갈 것이란 말이다. 그래서 수료 시점에서 TIL에 대한 개편을 진행했다. 깃헙에 TIL이라는 레포를 하나 생성하고, 기록할 내용들을 카테고리로 구분해서 개별 브랜치를 나눴다. 그리고 그 브랜치에 기록된 학습한 내용의 TIL을 머지시키는 방식으로 계속 진행하고 있다.&lt;a href=&quot;https://github.com/hankyeolk/TIL&quot;&gt;TIL 레포로 놀러오세요 😃&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막으로 이 글이 올라가는 블로그는 2021년이 되어서 커스텀이 새롭게 된 깃헙 블로그이다. 물론, 개발을 처음 배우면서 기록했던 TIL이 넘치는 그 블로그도 내가 한땀 한땀 커스텀했었다. 하지만 그 블로그의 CSS나 양식들이 이제 좀 마음에 들지 않아서 완전히 새로운 테마를 찾았다. 그리고 연말의 정말 끝자락이 되어서야 나에게 핏한 블로그 테마를 찾았다. &lt;a href=&quot;https://github.com/startbootstrap/startbootstrap-clean-blog-jekyll&quot;&gt;Clean Blog 테마&lt;/a&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;블로그에 대한 CSS 커스텀은 1월 2일 새벽에 마무리 되었다. 이제 이 블로그에 정착하는 것이 2021년 목표다. 그리고 꾸준한 블로깅도 또 역시 하나의 목표다. 🙏&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px;margin-bottom: 55px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;아직도 개발 블로그에 대해서 고민이 많다. 하지만 블로그는 나의 삶을 일부분 확실하게 바꾸어주었다. &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;&lt;b&gt;기록의 힘&lt;/b&gt;&lt;/mark&gt;을 크게 깨달을 수 있었다. &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;&lt;b&gt;기록이 익숙함으로 수렴&lt;/b&gt;&lt;/mark&gt;해가는 경험을 할 수 있게 해주었다. 내 블로그 글로 코드스테이츠 동기와 한 번 더 &lt;mark style=&quot;background-color: #fff3bf&quot;&gt;&lt;b&gt;소통&lt;/b&gt;&lt;/mark&gt;할 수 있었다. (정말 소중한 경험이다.) &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;누군가에게 내가 기록했던 경험을 자신있게 이야기 하고 있다. 블로그 전도사가 된 느낌이다. 아직도 &lt;em&gt;개발 블로그를 어떻게 시작할지&lt;/em&gt;라던지 &lt;em&gt;어떻게 작성해야 할지 모르겠다&lt;/em&gt;는 고민을 하고 있다면, 정말 조악한 내 블로그들을 보면서 힘을 얻었으면 좋겠다. 💪🏼 &lt;br /&gt;&lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="blog" /><category term="review" /><summary type="html">스압이 있을 것 같습니다. 🥴</summary></entry><entry><title type="html">잘가라 2020년</title><link href="https://dddoublek.github.io/2020/12/30/review.html" rel="alternate" type="text/html" title="잘가라 2020년" /><published>2020-12-30T00:00:00+09:00</published><updated>2020-12-30T00:00:00+09:00</updated><id>https://dddoublek.github.io/2020/12/30/review</id><content type="html" xml:base="https://dddoublek.github.io/2020/12/30/review.html">&lt;p&gt;가수 전인권님의 노래 가사가 더욱 생각나는 한 해였다. &lt;strong&gt;지나간 것은 지나간 대로 그런 의미가 있다&lt;/strong&gt;는 그 가사가 왜 이렇게 공감이 되는지. 코로나로 집에만 있는 요즘 왜 오늘 이렇게 발에 스치는 웃풍이 더 차갑게 느껴지는지 모르겠지만, 올해의 마지막 수요일에 그렇게 지나간 것들에 의미를 되짚어 본다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/adieu2020.png&quot; alt=&quot;아듀 2020&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;올해의-선택---첫-직장에서-퇴사&quot;&gt;올해의 선택 - &lt;strong&gt;첫 직장에서 퇴사&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;2019년 4월 말미에 나는 내 인생 첫 직장을 서울에 구했었다. 아르바이트를 한 것을 포함한다면 직장은 여러 곳이 있었지만, 대학 졸업 후 내 선택에 의해 내 뜻을 펼칠 수 있었던 직장은 그 곳이 처음이었다. 그래서 올해 3월 14일에 내 선택에 더 아쉬움이 컸고 아픔도 많았다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래도 이 선택을 &lt;strong&gt;올해의 선택&lt;/strong&gt;으로 정했다. 정하지 않을 이유가 없었다. 아쉬운 만큼 나는 성장할 수 있었고 좋은 인연을 많이 만들었기 때문이다. 내 선택에 결정적인 요인은 &lt;em&gt;‘나 스스로’&lt;/em&gt; 였다. 그래서 더욱 후회없이 2개월의 시간을 충분히 쉴 수 있었다. (물론 엄청 많은 소비로 이어졌지만 😅) &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;퇴사라는 선택이 지금의 새로운 결과로 갈무리 되었기 때문에 정말로 후회없이 잘 선택했다고 지금 되돌아보며 생각한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;올해의-책---평소의-발견&quot;&gt;올해의 책 - &lt;strong&gt;평소의 발견&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;광고 카피라이터로 활동하는 유병옥 작가님의 &lt;strong&gt;평소의 발견&lt;/strong&gt;이라는 책을 올해 내가 읽은 책 중에서 가장 베스트로 꼽고싶다. 퇴사 이후에 직장 동기분께서 추천해주셔서 읽은 책이었다. 마침 나에게 많이 주어진 여유로운 시간에 읽어서 더욱 좋았던 책인 것 같다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;책의 제목처럼 무뎌져서 잘 발견하기 힘들었던 ‘평소’라는 순간을 되돌아보게 했다. 나의 평소들은 찬란하게 유난스럽지는 않았지만 속속들에서 깨알같은 재미가 있었다. 이 책을 읽고 비빔면을 만들면서 면과 소스의 관계에 대해 진지하게 고민을 해보았으니 말 다했다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;언젠가 나도 이런 평소의 기록들을 에세이로 엮어보고 싶다는 생각이 들었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;올해의-내꺼---맥북프로-16인치&quot;&gt;올해의 내꺼 - &lt;strong&gt;맥북프로 16인치&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;정말 큰 맘을 먹었다는게 느껴진다. 워우. 맥북프로라니. 그것도 16인치로 구매했다. 퇴사를 하고 이것저것 하고 싶은 것이 많아서 기존에 있던 맥북프로 13인치를 처분하고 16인치로 과감하게 쩜프했다. 🏃🏻‍♂️ &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;결과는 정말 대만족을 넘어선 천상계 만족중이다. 조금 들고다니기 무거웠다는 단점을 제외하고는 정말 만족한다. 아 아쉬움이 하나 있다면 기존에 60W 정도였던 배터리 용량이 더 커져서 가지고 있던 충전기로 충전이 힘들었다는 부분. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;특히 만족하는 것은 넓어진 화면이다. 마그넷 에플리케이션으로 창을 분할해도 넓다는 느낌이 강하다. 내장 키보드도 치는 맛이 더 살아났다. 그리고 스피커가 진짜 정말 좋은 것 같다. 이걸로 넷플릭스를 많이 봤는데 생동감이 넘치는 사운드랄까. 램도 기본 16기가라 너무 만족한다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;요즘 M1 칩으로 더 무장한 맥 시리즈가 나를 힘들게 하지만 이 16인치 맥을 오랫동안 애지중지 하면서 아껴줄 생각이다. 😍&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;올해의-컴트루---코드스테이츠-개발자-과정-수료&quot;&gt;올해의 컴트루 - &lt;strong&gt;코드스테이츠 개발자 과정 수료&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;올해의 선택 항목에 들어가야하지 않을까 하고 정말 많이 고민을 했다. 하지만, 퇴사가 선택의 영역이었다면 개발자로의 전직, 미래는 내가 항상 꿈꾸고 있었던 부분이라 선택보다는 드림스 컴트루에 보다 가깝다. 그래서 올해의 컴트루에 코드스테이츠 개발자 과정 수료를 당당하게 적는다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;정말 5개월의 시간이 힘들었다. 우여곡절이 많았다. 그리고 자바스크립트로 할 수 있는 것이 많다는 것에 놀랐다. 그 시련의 과정을 겪으면서 내실을 탄탄하게 다듬을 수 있었다. 내공도 쬐에끔 쌓였다. 그리고 내 생일에 조금은 시원하게 수료했다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;코드스테이츠를 수료하고 좋은 기회가 생겨 지금은 코드스테이츠에서 운영 엔지니어로 일하고 있다. 코드를 작성할 시간은 적지만 나처럼 많은 우여곡절을 겪은 수강생분들을 도울 수 있어서 참 즐겁게 일하고 있다. 개인적으로 시간을 내서 공부도 열심히(?) 하고 있다. 나는 지금의 자리에 머물지 않는 개발자가 될 것이기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;올해의-예능---유재석&quot;&gt;올해의 예능 - &lt;strong&gt;유재석&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;이 시국에 예능만큼 가볍게 소모하면서 많은 즐거움을 창출하는 것은 많지 않다고 생각한다. 적어도 나에게는 말이다. 그만큼 나는 예능 프로그램을 많이 좋아한다. 올해는 특히 유느님이 MC를 맡은 예능을 특별히 많이 찾아보고 짤로보고 유튜브 클립 영상으로 돌려봤다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;“놀면 뭐하니”에서는 유재석의 주무기인 토크는 내려두고 치킨과 라면, 하프에다가 90년대 풍의 혼성 그룹까지. 마지막으로 지미유는 정말 유재석의 캐릭터 중 인생 캐릭터에 가깝지 않을까 하는 생각이 들었다. 환불 원정대가 생각보다 길어서 도중에 좀 루즈하다는 감은 있었지만 이 시국에 가장 큰 즐거움을 준 것은 확실하다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;“유퀴즈”는 유재석과 조세호의 캐미가 5할을 차지하는 것 같다. 유재석의 애착인형 같은 조세호의 모습을 보면서 웃지 않을 수가 없었다. 유퀴즈는 정말 이시국에 가장 대처를 잘한 예능이 아니었을까 하는 생각이 든다. 프로그램 런칭 당시만 해도 무한도전에서 예전에 mbc 파업때 진행했던 ‘잠깐만’ 코너를 단순히 카피한 모습일 것이라 생각했다. 하지만 이 시국의 유퀴즈는 아마 많은 시청자들에게 최애 프로그램으로 자리 잡지 않았을까 조심히 예상해본다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;올해의-지배---코로나와-그-부속물&quot;&gt;올해의 지배 - &lt;strong&gt;코로나와 그 부속물&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;정말 별일 아닐 거라 가볍게 생각했던 코로나는 끝이 보이지 않는다. 올 한해를 코로나가 가득채웠다고 해도 과언이 아니다. 끔찍하다. 작은 바이러스에 이렇게 인간이 힘들어하는 모습을 처음 본다. 다시금 이 지구의 주인은 인간이 아니라는 사실이 느껴진다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래서 그런지 코로나로 뒤덮힌 이 시국에 다양한 부속물들이 올해 대한민국을 지해하지 않았나 싶다. mbti를 필두로 한 심리 테스트는 이제 모든 유튜브와 예능의 자막을 담당하고 있다. 새로운 서비스나 제품을 내놓는 기업들도 가벼운 심리 테스트를 하나씩 끼우고 있다. 의무마냥. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;비슷한 맥락으로 밸런스 게임이 다시금 인기를 얻었던 것 같다. 밸런스 게임을 마주할 때마다 어떻게 이렇게 극단적으로 밸런스를 잘 맞췄는지 감탄을 할 뿐이었다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;언제 또 12월이 됐는지 모르겠다. 정말 많은 선택을 요구 받은 한 해였고, 다양한 결과가 나에게 쏟아졌다. 이제 몇 시간 뒤면 또 새롭게 1월부터 시작되는 한 해가 찾아온다. 코로나가 언제 종식될 지 모르겠지만 이 상황에 적응해서 살고 있기 때문에 그냥 묵묵히 지금의 삶을 살 것 같다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래도 올해와는 또 다른 완전히 새로운 순간들이 평소에 들어올 것이다. 기대되고 또 어떻게 펼쳐질지 두근거린다. 정말 고생 많았다고 스스로를 다독여주면서 이 회고를 마무리한다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;로또 당첨되고 싶다!&lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="blog" /><category term="review" /><summary type="html">가수 전인권님의 노래 가사가 더욱 생각나는 한 해였다. 지나간 것은 지나간 대로 그런 의미가 있다는 그 가사가 왜 이렇게 공감이 되는지. 코로나로 집에만 있는 요즘 왜 오늘 이렇게 발에 스치는 웃풍이 더 차갑게 느껴지는지 모르겠지만, 올해의 마지막 수요일에 그렇게 지나간 것들에 의미를 되짚어 본다.</summary></entry></feed>

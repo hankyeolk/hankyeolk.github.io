@@ -1,73 +1,25 @@
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>{{ page.title }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!--GA-->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+  <title>
+    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}
+    {% else %}{{ site.title | escape }}{% endif %}
+  </title>
 
-    gtag("config", "UA-134593008-1");
-  </script>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-  <!-- Post info -->
-  <meta property="og:site_name" content="{{ site.title }}" />
-  <meta property="fb:app_id" content="1607605225977118" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <link rel="stylesheet" href="{{"/assets/vendor/bootstrap/css/bootstrap.min.css" | relative_url }}">
 
-  <meta
-    property="og:image"
-    content="{% if page.post-header == true or page.project-header == true %}{{ site.url }}{{ page.url }}{{ page.header-img }}{% else %}{{ site.url }}{{ '/img/share-img.jpg'}}{% endif %}"
-  />
+  <link rel="stylesheet" href="{{"/assets/vendor/fontawesome-free/css/all.min.css" | relative_url }}">
 
-  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="{{"/assets/main.css" | relative_url }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
 
-  <!-- title -->
-  <meta
-    property="og:title"
-    content="{% if page.url == '/' %}{{ page.subtitle}}{% else %}{{ page.title }}{% endif %}"
-  />
-
-  <!-- <meta name="twitter:title" content="{% if page.url == '/' %}{{ page.subtitle}}{% else %}{{ page.title }}{% endif %}"> -->
-
-  <!-- description -->
-  <meta
-    property="og:description"
-    content="{% if page.main == true %}{{ page.description }}{% else %}{{ page.content | truncatewords: 30 | strip_html }}{% endif %}"
-  />
-
-  <!-- <meta name="twitter:description" content="{% if page.main == true %}{{ page.description }}{% else %}{{ page.content | truncatewords: 30 | strip_html }}{% endif %}"> -->
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/styles.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700;900&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css"
-    rel="stylesheet"
-    type="text/css"
-  />
-  <link
-    href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
-    rel="stylesheet"
-    type="text/css"
-  />
-  <link
-    href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css"
-    rel="stylesheet"
-    type="text/css"
-  />
 </head>

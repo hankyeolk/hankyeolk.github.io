@@ -2,51 +2,67 @@
 layout: default
 ---
 
-<div class="post">
-  <div class="post-info">
-    <div class="post-type-tag">
-      {% if page.draft == true %}
-      <div class="catalogue-tag">
-        Coming Soon
-      </div>
-      {% endif %}
-      <div class="post-type">
-        {{ page.type }}
-      </div>
-      <div style="text-align: center;">
-        <a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}"
-          target="_blank">
-          <img
-            src="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}.svg" />
-        </a>
+<!-- Page Header -->
+{% if page.background %}
+<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl}}')">
+  {% else %}
+  <header class="masthead">
+    {% endif %}
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{ page.title }}</h1>
+            {% if page.subtitle %}
+            <h2 class="subheading">{{ page.subtitle }}</h2>
+            {% endif %}
+            <span class="meta">
+              <a href="#">{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</a>
+              
+            </span>
+            <div class="tag-wrapper">
+              {% if page.tags %}
+              {% for tag in page.tags %}
+              {% if site.data.tags contains tag %}
+              <a href="/posts/?tag={{tag}}">
+                <span class="tag">{{ site.data.format[tag] }}</span>
+              </a>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <h1 class="post-title">
-      {{ page.title }}
-    </h1>
-    <h2 class="post-subtitle">
-      {{ page.subtitle }}
-    </h2>
-  </div>
+  </header>
 
-  <!-- {% if page.portfolio == true %}
-    <article class="portfolio-info">
-        <section>
-            <span class="portfolio-property">{{ page.role-title }}</span>
-            <p class="info-small">{{ page.role }}</p>
-        </section>
-        <section>
-            <p>{{ page.duration }}</p>
-        </section>    
-    </article>
-    {% endif %} -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
 
-  {{ content }} {% if page.draft == true %}
-  <div class="catalogue-draft-message">
-    <h1>
-      &#x1F64B; Coming Soon!
-    </h1>
-    현재 열심히 글을 쓰고 있어요. 조금만 기다려주세요!
+        {{ content }}
+
+        <hr>
+
+        <div class="clearfix">
+
+          {% if page.previous.url %}
+          <a class="btn btn-primary float-left"
+            href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+            data-placement="top" title="{{ page.previous.title }}">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          {% endif %}
+          {% if page.next.url %}
+          <a class="btn btn-primary float-right" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
+            data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next<span
+              class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </div>
   </div>
-  {% endif %}
-</div>

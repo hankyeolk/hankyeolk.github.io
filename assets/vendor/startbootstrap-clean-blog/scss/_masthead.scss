@@ -1,0 +1,112 @@
+// Styling for the masthead
+header.masthead {
+  // TIP: Background images are set within the HTML using inline CSS!
+  font-family: "Noto Sans KR", sans-serif;
+  margin-bottom: 50px;
+  background: no-repeat center center;
+  background-color: $gray-600;
+  min-height: 500px;
+  position: relative;
+  @include background-cover;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $gray-300;
+    opacity: 0.3;
+  }
+  .page-heading,
+  .post-heading,
+  .site-heading {
+    padding: 200px 0 150px;
+    color: white;
+    @media only screen and (min-width: 768px) {
+      padding: 200px 0;
+    }
+  }
+  .page-heading,
+  .site-heading {
+    text-align: center;
+    h1 {
+      font-size: 50px;
+      margin-top: 0;
+    }
+    .subheading {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.1;
+      display: block;
+      margin: 10px 0 0;
+      // @include sans-serif-font;
+    }
+    @media only screen and (min-width: 768px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
+  }
+  .post-heading {
+    color: $black;
+    h1 {
+      font-size: 5rem;
+    }
+    .meta,
+    .subheading {
+      line-height: 1.1;
+      display: block;
+    }
+    .subheading {
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin: 10px 0 30px;
+      // @include sans-serif-font;
+    }
+    .meta {
+      color: $black;
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      // font-styl  e: italic;
+      // @include serif-font;
+      a {
+        color: $white;
+        &:hover {
+          text-decoration: underline;
+          text-decoration-style: dashed;
+        }
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      h1 {
+        font-size: 4rem;
+      }
+      .subheading {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+.tag-wrapper {
+  margin-top: 20px;
+}
+
+.tag {
+  padding: 6px 10px;
+  vertical-align: middle;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-right: 5px;
+  margin-bottom: 8px;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #7e8384;
+  color: #fff5e8;
+}
+
+.selected {
+  color: #f0edcc;
+  background-color: #02343f;
+}
