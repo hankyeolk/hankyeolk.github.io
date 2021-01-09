@@ -65,7 +65,7 @@ const hk_stacks = stack => {
 <p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
 
 - [🐈‍⬛ hankyeolk 깃허브](https://github.com/hankyeolk) <br />
-- [👶🏼 개발자 준비생 시절 블로그](https://hankyeolk.github.io) <br />
+- [👶🏼 개발자 준비생 시절 블로그](https://dddoublek.github.io/TIL) <br />
 - [📖 개인 위키](https://www.notion.so/ddovblek/Javascript-Do-Something-d8d913babe0647e3ba507b05dbf66186)
 
 <p style="display: block; margin-top: 0px;margin-bottom: 40px" > </p>

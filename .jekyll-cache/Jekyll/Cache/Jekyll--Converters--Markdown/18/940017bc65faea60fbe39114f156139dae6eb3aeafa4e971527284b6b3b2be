@@ -1,0 +1,261 @@
+I"�^<blockquote>
+  <p>specially thanks to 김정환 개발자님.
+이 내용은 저의 개인 github 레포에서 정리중인 TIL에 기록된 내용을 정리하였습니다.</p>
+</blockquote>
+
+<h2 id="웹팩의-등장-배경-모듈과-브라우져-ie는-잘가요">웹팩의 등장 배경. 모듈과 브라우져. IE는 잘가요~✋</h2>
+
+<h3 id="포스트-모듈-시스템-시절"><strong>포스트 모듈 시스템 시절</strong></h3>
+
+<p>모듈 시스템이 없던 시절에서는 HTML 파일에 로직을 담당하는 함수가 담긴 스크립트 파일을 불러와서 사용해야 했다. 전역 공간에서 모든 함수가 노출될 수 있었다. 함수의 이름이 동일하다면 충돌이 이는 것은 당연했다. (브라우져의 콘솔에서도 함수를 사용할 수 있을정도로) 그래서 ES2015부터 모듈 구문이 사용되게 되었다. <br /></p>
+
+<h3 id="위대한-es6-이후-시절"><strong>위대한 ES6+ 이후 시절</strong></h3>
+
+<ul>
+  <li>IIFE 방식으로 함수에 임의의 스코프를 형성했다. 함수 스코프를 만들어서 외부에서 해당 함수를 접근하지 못하도록 가둘 수 있다.</li>
+  <li>
+    <p>IIFE는 즉시 실행 함수를 말한다. 해당 함수 내부로 우리가 정의한 함수의 스코프를 제한할 수 있다. 전역에서도 동일한 함수에 대한 충돌이 없다.</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">math</span> <span class="o">=</span> <span class="nx">math</span> <span class="o">||</span> <span class="p">{};</span>
+
+<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">math</span><span class="p">.</span><span class="nx">sum</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">;</span> <span class="c1">// math 객체에 메서드 형식으로 등록</span>
+<span class="p">})();</span>
+</code></pre></div>    </div>
+
+    <p><br /></p>
+  </li>
+  <li>모듈 방식은 흔히 알고 있는 <code class="language-plaintext highlighter-rouge">const = require</code> 형태의 <strong>CommonJS</strong>가 유명하다. 서버 사이드 런타임인 node.js에서 사용된다. Express.js에서 주로 많이 사용했다.</li>
+  <li>
+    <p>exports 키워드로 모듈을 생성하고 require() 함수로 이 모듈을 다른 파일에서 불러다 쓰는 형태이다.</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// math.js</span>
+<span class="nx">exports</span> <span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">};</span>
+
+<span class="c1">// app.js</span>
+<span class="kd">const</span> <span class="nx">math</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./math.js</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">math</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// 3</span>
+</code></pre></div>    </div>
+
+    <p><br /></p>
+  </li>
+  <li>ES2015의 표준 모듈 시스템은 export 키워드로 모듈을 생성하고 import 키워드로 불러오는 형태이다.</li>
+  <li>export한 모듈은 <code class="language-plaintext highlighter-rouge">import { name } from './root'</code> 형태로 불러와 사용할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">export default</code> 키워드로 모듈을 내보내면 {}를 달지 않아도 된다.
+<br /></li>
+</ul>
+
+<p>웹팩의 등장에 핵심적으로 영향을 미친 것은 브라우져에서 모듈을 지원하는지에 대한 여부였다. IE와 같은 브라우져는 그 버전에 따라 지원이 너무 되지 않는 케이스가 많았다. 그래서 우리는 웹팩을 이용하게 되었다. 엔트리 포인트를 시작으로 (번들링이 시작되는 파일) 프로덕트의 코드를 모듈로 연결하여 하나의 결과물로 아웃풋 경로에 만드는 것이 웹팩이 하는 일이다. 웹팩의 도움으로 우리는 ES6의 모듈 시스템을 적극적으로 사용할 수 있다.</p>
+
+<p><br /></p>
+
+<h2 id="webpack-cli를-활용해서-가볍게-번들링을-해보자">Webpack cli를 활용해서 가볍게 번들링을 해보자.</h2>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">npm i -D webpack webpack-cli
+</span></code></pre></div></div>
+
+<p>npm을 통해서 웹팩 터미널 도구를 설치하면 node_modules/.bin 디렉토리에 webpack-cli에서 사용할 수 있는 명령어들이 보일 것이다. <code class="language-plaintext highlighter-rouge">node_modules/.bin/webpack --help</code>를 입력하면 웹팩 상에서 사용할 수 있는 터미널 명령어가 나온다. <br /></p>
+
+<p><img src="../img/posts/210109/webpack-cli.png" alt="webpack-cli" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--mode</code> 옵션은 웹팩이 번들링을 동작시키는 모드를 의미하는데, 개발에서 사용한다면 development를 지정해주면 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">--entry</code> 옵션은 말 그대로 번들링이 처음 시작될 하나의 시작점을 지정해주는 것이다. app.js에서 파일 번들링이 시작된다면 <code class="language-plaintext highlighter-rouge">--entry &lt;경로/app.js&gt;</code> 형태로 명령어를 작성하면 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">-o, --output-path</code> 옵션은 번들링 결과물이 저장될 위치를 말한다.</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">node_modules/.bin/webpack --mode development --entry src/app.js --output dist/main.js
+</span></code></pre></div></div>
+
+<p>위의 명렁어를 실행하면 <code class="language-plaintext highlighter-rouge">dist/main.js</code> 경로에 번들링 결과물이 저장되는 것이다.</p>
+
+<p><br /></p>
+
+<h3 id="webpackconfigjs-파일로-웹팩-설정-경로-지정하기">webpack.config.js 파일로 웹팩 설정 경로 지정하기</h3>
+
+<p>webpack.config.js 파일로 웹팩의 번들링 환경을 쉽게 구축해줄 수 있다. 설정 파일이 있다면 매번 노드 모듈 폴더의 웹팩 모듈을 찾지 않고, npm 스크립트 명령어로 번들링을 진행할 수 있다. <br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// output 절대 경로를 만들어주기 위해서 노드 내장 모듈인 path를 불러온다.</span>
+<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">development</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">main</span><span class="p">:</span> <span class="dl">"</span><span class="s2">src/app.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="dl">"</span><span class="s2">[name].js</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dist</span><span class="dl">"</span><span class="p">),</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li>mode, entry에 대한 설정은 cli에서 사용한 것과 동일하다.</li>
+  <li>output 옵션의 경우 번들링이 될 파일 이름을 <code class="language-plaintext highlighter-rouge">[name].js</code> 형태로 하여, entry 옵션에서 지정해준 키값 ‘main’을 받게 되는 형식이다.</li>
+  <li>output 옵션에서 path의 경우 절대 경로를 사용하게되어, 노드 내장 모듈인 path의 resolve 함수를 사용해주었다.</li>
+  <li>package.json에 스크립트 명령어로 웹팩 번들링하는 구문을 넣어줄 수 있다. <code class="language-plaintext highlighter-rouge">"bundle" : "webpack"</code></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="loader--자바스크립트에서-모듈을-불러올-수-있게-만든다">Loader : 자바스크립트에서 모듈을 불러올 수 있게 만든다.</h2>
+
+<p>로더는 말 그대로 불러오게 해주는 어떤 도구다. 프로젝트에 존재하는 파일을 모듈로 인식하게 해주는 것이 웹팩 로더의 역할이다. 그것이 CSS건 이미지 파일이건 모두 모듈로 인식해서 자바스크립트 파일에 불러와 사용하게 해준다. React 프로젝트를 할 때, 컴포넌트 파일에 css를 불러와 사용하는 것이 대표적인 예 일것이다. 역시나 불러올 때는 <code class="language-plaintext highlighter-rouge">import</code> 키워드를 사용하면 된다.<br /></p>
+
+<p>웹팩의 <strong>로더</strong>는 다른 언어로 작성된 파일을 자바스크립트 문법으로 변환해주거나 (예를 들면 타입스크립트로 작성된 코드를 자바스크립트로 변환한다던지), 적은 용량의 이미지는 html 태그의 인라인 data URL 형식으로 반환해주는 등의 역할을 한다. <br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">webpack.config.js</code> 설정 파일에서 로더의 동작을 <strong>module</strong>이라고 하는 객체 내부에서 정의해주면 된다. <br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span> <span class="c1">// .js확장자로 끝나는 모든 파일에 이 로더를 적용한다는 의미 (정규표현식이 온다.)</span>
+      <span class="na">use</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">로더 이름</span><span class="dl">"</span><span class="p">],</span> <span class="c1">// 사용할 로더를 순서대로 반영한다.</span>
+      <span class="na">loader</span><span class="p">:</span> <span class="dl">"</span><span class="s2">로더 이름</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 단독으로 사용되는 로더 규칙을 정의 할 경우</span>
+      <span class="na">option</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="p">},</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">module.rules[0].use</code> 에 정의된 로더 배열은 뒤에서부터 앞의 순서로 로더가 동작하게 된다. 그래서 특정 번들링 순서가 중요하다면 가장 먼저 적용되어야 할 로더를 맨 뒤에 요소로 넣어줘야 한다.</li>
+  <li>use라는 키를 사용하지 않고 직접적으로 사용할 로더의 이름을 <code class="language-plaintext highlighter-rouge">loader: "로더이름"</code> 형태로 정의해줄 수 있다.</li>
+  <li>option 키에 로더가 동작할 때 동적으로 줄 수 있는 옵션을 정의한다. (ex. publicPath, name, limit 등)</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="자주-사용되는-로더">자주 사용되는 로더</h3>
+
+<p><code class="language-plaintext highlighter-rouge">css-loader</code> <br /></p>
+
+<ul>
+  <li>말 그대로 스타일시트(css)에 작성된 css를 자바스크립트에 모듈로 불러오게 해주는 로더</li>
+  <li>css-loader로 css를 모듈화하면 번들링된 파일에서 자바스크립트 코드로 변환된 것을 볼 수 있다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">style-loader</code> <br /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">css-loader</code>가 변환해준 스타일 시트를 브라우저가 이해할 수 있도록 dom에 추가해주는 로더</li>
+  <li>일단 css를 자바스크립트에 모듈로 불러와 변환해주고 그 다음에 dom에 넣어주는 순서가 중요하다. <code class="language-plaintext highlighter-rouge">use: ["style-loader", "css-loader"]</code></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">file-loader</code> <br /></p>
+
+<ul>
+  <li>프로젝트 소스 코드에서 사용되는 모든 파일을 모듈로 사용할 수 있게 해주는 로더</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="dist-폴더의-번들링-결과물에-어떤-처리를-하는-플러그인">dist 폴더의 번들링 결과물에 어떤 처리를 하는, 플러그인.</h2>
+
+<p>로더가 번들링할 파일들을 모듈화하여 번들링 시키는 동작을 도와주는 웹팩의 도구라면, 플러그인은 번들링된 파일에 특정 처리를 하는 도구다. 웹팩 플러그인을 활용하면 번들링이 된 main.js 파일을 한 줄로 만들어 난독화 시킬 수 있다. 또는 헤드의 타이틀에 개발중인지 아닌지를 표시할 수 도 있다. (html을 직접 건들지 않고) <br /></p>
+
+<p>로더가 함수의 형태였다면, 플로그인은 인스턴스를 만드는 클래스로 제작된다. new 키워드로 플러그인 인스턴스 생성자 함수를 부르면 된다. <code class="language-plaintext highlighter-rouge">webpack.config.js</code> 설정 파일에서 <code class="language-plaintext highlighter-rouge">plugins : [ new 플러그인 ]</code> 형태로 사용해주면 된다.</p>
+
+<p><br /></p>
+
+<h3 id="자주-사용되는-플러그인">자주 사용되는 플러그인</h3>
+
+<p>웹팩 플러그인을 직접 만들어서 사용하는 경우는 극히 드물다. 웹팩 내장 플러그인을 불러와서 붙이거나 서드파티 플러그인을 설치해서 사용한다. 웹팩 내장 플러그인의 문서는 <a href="https://webpack.js.org/plugins/">여기</a>에서 볼 수 있다.<br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">BannerPlugin</code> <br /></p>
+
+<ul>
+  <li>웹팩 내장 플러그인</li>
+  <li>빌드된 파일에 빌드 당시의 정보들을 기입할 수 있게 해준다.</li>
+  <li>빌드 정보, 커밋 헤드 정보, 날짜 등을 입력할 수 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// webpack.config.js</span>
+<span class="kd">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">webpack</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">childProcess</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">child_process</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">BannerPlugin</span><span class="p">({</span>
+      <span class="na">banner</span><span class="p">:</span> <span class="s2">`
+        Build Date: </span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleString</span><span class="p">()}</span><span class="s2">
+        Commit Version: </span><span class="p">${</span><span class="nx">childProcess</span><span class="p">.</span><span class="nx">execSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">git rev-parse --short HEAD</span><span class="dl">"</span><span class="p">)}</span><span class="s2">
+        Author: </span><span class="p">${</span><span class="nx">childProcess</span><span class="p">.</span><span class="nx">execSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">git config user.name</span><span class="dl">"</span><span class="p">)}</span><span class="s2">
+      `</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">DefinePlugin</code> <br /></p>
+
+<ul>
+  <li>웹팩 내장 플러그인</li>
+  <li>개발 환경에 따라서 달라지는 환경 변수값들을 관리해주는 플러그인이다.</li>
+  <li>흔히, 개발, 프로덕션 환경에서 api 요청을 보내는 url이 다르다면 배포때마다 수정을 하는 것보다는 자동으로 처리될 수 있게 웹팩 설정을 건드리면 된다.</li>
+  <li>기본적으로 <code class="language-plaintext highlighter-rouge">process.env.NODE_ENV</code> 값이 디폴트이다. 지정되지 않았다면 웹팩 mode 옵션의 환경이 기준이 된다.</li>
+  <li>이 플러그인은 웹팩이 컴파일을 하여 빌드되는 시점에 결정된 개발 환경을 인식해서 값을 조정한다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
+      <span class="dl">"</span><span class="s2">api.domain</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">development</span><span class="dl">"</span>
+          <span class="p">?</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://dev.api.domain</span><span class="dl">"</span><span class="p">)</span>
+          <span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://product.api.domain</span><span class="dl">"</span><span class="p">),</span>
+    <span class="p">}),</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">HtmlWebpackPlugin</code> <br /></p>
+
+<ul>
+  <li>서드파티 플러그인 <code class="language-plaintext highlighter-rouge">npm i -D html-webpack-plugin</code></li>
+  <li>빌드 이후의 html 파일을 후처리 하는 과정에 사용되는 플러그인이다.</li>
+  <li>번들링된 html 파일에 공백을 날려 난독화 하거나, 타이틀에 개발중인 점을 표시한다던지, 주석을 날릴 수도 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">html-webpack-plugin</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nl">plugins</span><span class="p">:</span> <span class="p">[</span>
+  <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+    <span class="na">template</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./src/index.html</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">templateParameters</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">env</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">development</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">(개발중)</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">minify</span><span class="p">:</span>
+      <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">production</span><span class="dl">"</span>
+        <span class="p">?</span> <span class="p">{</span>
+            <span class="na">collapseWhitespace</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 프로덕션 환경이면 공백을 날린다.</span>
+            <span class="na">removeComments</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 프로덕션 환경이면 주석을 날린다.</span>
+          <span class="p">}</span>
+        <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">}),</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">CleanWebpackPlugin</code> <br /></p>
+
+<ul>
+  <li>서드파티 플러그인</li>
+  <li>번들링된 파일이 담기는 웹팩 아웃풋 경로를 깔끔하게 유지시켜주는 플러그인이다.</li>
+  <li>새롭게 빌드된 파일 이전의 내용이 남아있는 것을 방지해서 빌드때마다 dist 폴더를 새롭게 구성한다는 개념이다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">CleanWebpackPlugin</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">clean-webpack-plugin</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nl">plugins</span><span class="p">:</span> <span class="p">[</span><span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">()];</span>
+</code></pre></div></div>
+:ET
