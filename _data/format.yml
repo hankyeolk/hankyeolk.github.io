@@ -12,3 +12,4 @@ gl: Graphql
 env: Env
 git: Git
 review: Review
+webpack: Webpack

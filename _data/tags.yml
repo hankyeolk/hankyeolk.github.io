@@ -1,8 +1,8 @@
 - blog
 - review
-# - js
+- js
 # - ts
-# - frontend
+- frontend
 # - backend
 # - jekyll
 # - react
@@ -10,5 +10,6 @@
 # - node
 # - nest
 # - gl
-# - env
+- env
 # - git
+- webpack
