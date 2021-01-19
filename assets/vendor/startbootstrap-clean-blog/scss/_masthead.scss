@@ -71,10 +71,10 @@ header.masthead {
       // font-styl  e: italic;
       // @include serif-font;
       a {
-        color: $white;
+        text-decoration: none;
+        color: $black;
         &:hover {
-          text-decoration: underline;
-          text-decoration-style: dashed;
+          color: $primary;
         }
       }
     }

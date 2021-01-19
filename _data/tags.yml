@@ -1,7 +1,7 @@
 - blog
 - review
 - js
-# - ts
+- ts
 - frontend
 # - backend
 # - jekyll
@@ -15,3 +15,4 @@
 - webpack
 - work
 - book
+- series
