@@ -4,7 +4,7 @@ title: "Typescript 이해하기 1편"
 subtitle: "자바스크립트에서 한 층 진화하겠습니다."
 date: 2021-01-20
 background: "/img/posts/210120/post-typescript.png"
-tags: [ts, frontend, series]
+tags: [ts, frontend, backend, series]
 ---
 
 > 깃헙 TIL 레포에 기록했던 내용을 정리하여 블로깅합니다.

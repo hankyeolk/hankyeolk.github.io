@@ -4,7 +4,7 @@ title: "Typescript 이해하기 2편"
 subtitle: "이넘부터 타입 호환성까지"
 date: 2021-01-20
 background: "/img/posts/210120/post-typescript.png"
-tags: [ts, frontend, series]
+tags: [ts, frontend, backend, series]
 ---
 
 > 깃헙 TIL 레포에 기록했던 내용을 정리하여 블로깅합니다.
@@ -295,6 +295,6 @@ f3 = f4; // Error -> f4로 호출할 때 반환될 수 있는 값의 타입이 �
 
 <br />
 
-<div class="comming-soon"></div>
+<div class="comming-soon">to be continue ..</div>
 
 <br />
