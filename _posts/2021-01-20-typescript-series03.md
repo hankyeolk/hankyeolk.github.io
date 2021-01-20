@@ -186,7 +186,7 @@ sharkMap.age = 123; // Error: number 타입은 불린 타입에 할당될 수 �
 
 `MakeType`이라는 타입은 제네릭으로 특정 인터페이스 또는 객체를 받아서 그 인터페이스의 속성을 옵셔널하게 만들고 불린 타입을 할당하게 한다. 우리의 친절한 VSCode는 이 타입의 변환을 잘 캐치한다.<br />
 
-<img src="./img/posts/210120/mapped01.png" style="width: 100%;" />
+<img src="/img/posts/210120/mapped01.png" style="width: 100%; border: 1px solid gray;"/> <br />
 
 <br />
 
@@ -289,9 +289,11 @@ type T1 = IsStringType<string | number>; // string | not string
 type T2 = IsStringType<string> | IsStringType<number>; // = T1
 ```
 
-`타입 T1`의 경우 string | number가 string 타입보다 범위가 크기 때문에 기본적으로 string 타입에 할당이 불가하다. 그래서 'not string' 타입이 되어야 한다고 생각이 들지만, 조건부 타입에서 유니온 타입을 적용하면 두 타입을 모두 가질 수 있게된다. 그래서 사실상 T1의 타입은 T2의 타입을 정하는 것과 방식이 같다. <br />
+<p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
 
-위의 코드를 쉽게 설명하면, T에 들어온 유니온 타입을 각각 string에 할당할 수 있는지를 비교하는 것이 조건부 타입이라고 보면 된다. string은 할당 가능하지만, number는 string에 할당이 불가하기 때문에 T1이 'string | not string'의 타입을 가지는 것이다.
+타입 T1의 경우 `string | number`가 `string 타입`보다 범위가 크기 때문에 기본적으로 string 타입에 할당이 불가하다. 그래서 'not string' 타입이 되어야 한다고 생각이 들지만, 조건부 타입에서 유니온 타입을 적용하면 두 타입을 모두 가질 수 있게된다. 그래서 사실상 T1의 타입은 T2의 타입을 정하는 것과 방식이 같다. <br />
+
+위의 코드를 쉽게 설명하면, T에 들어온 유니온 타입을 각각 string에 할당할 수 있는지를 비교하는 것이 조건부 타입이라고 보면 된다. string은 할당 가능하지만, number는 string에 할당이 불가하기 때문에 T1이 `string | not string` 의 타입을 가지는 것이다.
 
 <br />
 
@@ -309,7 +311,7 @@ type extract<T, U> = T extends U ? T : never;
 type T6 = extract<1 | 3 | 5 | 7, 1 | 5 | 9>; // 1 | 5
 ```
 
-- `Exclude` 타입은 U에 할당 가능한 T는 빼고 나머지를 타입으로 가지게 해주는 타입이다. <1 | 3 | 5 | 7>에서 1, 5는 할당이 가능하기 때문에 제외하고 <3 | 7>만 타입으로 반영된다.
+- `Exclude` 타입은 U에 할당 가능한 T는 빼고 나머지를 타입으로 가지게 해주는 타입이다. `<1 | 3 | 5 | 7>` 에서 1, 5는 할당이 가능하기 때문에 제외하고 `<3 | 7>` 만 타입으로 반영된다.
 - `Extract`는 U에 할당 가능한 T만 추출하는 타입니다. 위의 설명과 반대로 동작한다.
 
 <br />
