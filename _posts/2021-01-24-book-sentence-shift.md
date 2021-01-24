@@ -23,43 +23,43 @@ tags: [book]
 
 <p style="display: block; margin-top: 0px; margin-bottom: 32px" > </p>
 
-> **_p.15) 당장 자기 생각을 술술 펼쳐 놓을 용기는 부족하지만, 할 말을 고르고 고른 뒤 답을 내놓는 사람도 있다는 것을 누군가가 알아봐 준 기분이었다. 스피커의 방향만 다르다 뿐이지 우리 같은 사람이 속으로 얼마나 많은 이야기를 하는데._**
+> **p.15) 당장 자기 생각을 술술 펼쳐 놓을 용기는 부족하지만, 할 말을 고르고 고른 뒤 답을 내놓는 사람도 있다는 것을 누군가가 알아봐 준 기분이었다. 스피커의 방향만 다르다 뿐이지 우리 같은 사람이 속으로 얼마나 많은 이야기를 하는데.**
 
 <p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
 
 나도 '나를 돌아볼 때' 위의 문장과 같은 생각을 많이 했었다. 내 속에서는 소리를 지르고 있는데 현실의 스피커는 닫혀있는 형국인. 아마 코로나 시국이 되고 나서, 그리고 20대에게 유독 추운 취업 시장을 겪어서 그런지 나를 쉽게 드러내지 못하는 습관들이 많은 사람들에게 생긴 것 같다.
 
-<p style="display: block; margin-top: 0px; margin-bottom: 15px" > </p>
+<p style="display: block; margin-top: 0px; margin-bottom: 25px" > </p>
 
-> **_p.27) 대세의 흐름을 따르지 않고 나만의 방향을 만드는 힘. 내 세계를 스스로 구축하는 뿌듯함. 좋은 것을 알아보는 안목이 있다는 기쁨. 취향이 있는 사람에겐 이런 주체적인 기쁨이 쌓인다._**
+> **p.27) 대세의 흐름을 따르지 않고 나만의 방향을 만드는 힘. 내 세계를 스스로 구축하는 뿌듯함. 좋은 것을 알아보는 안목이 있다는 기쁨. 취향이 있는 사람에겐 이런 주체적인 기쁨이 쌓인다.**
 
 <p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
 
 취향을 내가 스스로 구축하는 세계라고 표현하는 구절이 너무 마음에 들어서 책에 마킹했다. 그 세계를 구축하면서 쌓이는 **주체적인 기쁨**이라니. 너무 명확하게 받아들여지면서도 아름다운 문장이다. 🌹
 
-<p style="display: block; margin-top: 0px; margin-bottom: 15px" > </p>
+<p style="display: block; margin-top: 0px; margin-bottom: 25px" > </p>
 
-> **_p.80) 선물이 나에게 오기까지 그 사람이 겪었던 여정 자체가 선물이다._**
+> **p.80) 선물이 나에게 오기까지 그 사람이 겪었던 여정 자체가 선물이다.**
 
 <p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
 
 한 남자가 한 여자에게 꽃을 선물하는 내용을 담고 있는 에피소드였다. 남자가 여자에게 꽃을 선물하는 선택을 하기까지의 과정들 자체가 한 여성에게는 선물일 수 있다는 의미다. 정말 공감이 되는 문장이었다. 나도 몇 번 꽃을 선물했었는데, 그 과정에서 받는 사람이 얼마나 기뻐할까? 꽃들의 색 조합은 잘 어울리나? 꽃다발을 감싸고 있는 포장지는 느낌이 있는가? 하면서 계속 질문을 던졌었다. 아마 이 관심의 과정 자체가 받는 사람에게는 선물이 되지 않을까 싶다.
 
-<p style="display: block; margin-top: 0px; margin-bottom: 15px" > </p>
+<p style="display: block; margin-top: 0px; margin-bottom: 25px" > </p>
 
-> **_p.116) 우리는 언제나 옳을 수 없고, 타인은 언제나 틀리지 않기 때문에 충돌을 겪으며 생각은 변화한다._**
+> **p.116) 우리는 언제나 옳을 수 없고, 타인은 언제나 틀리지 않기 때문에 충돌을 겪으며 생각은 변화한다.**
 
 <p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
 
 업무적으로 다른 사람과 많은 커뮤니케이션을 하고 있는 요즘의 나에게 가장 와닿는 문장이었다. '나는 언제나 틀릴 수 있고, 타인이 언제나 틀린 것은 아니다.' 이 문장을 모든 커뮤니케이션 전과 중간과 후에 각인할 필요가 있어보인다.
 
-<p style="display: block; margin-top: 0px; margin-bottom: 15px" > </p>
+<p style="display: block; margin-top: 0px; margin-bottom: 25px" > </p>
 
 이 책에서 가장 좋았던 문장을 소개하면서 '나를 움직인 문장들'의 읽고 난 소감을 마무리하려고 한다.
 
-<p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
+<p style="display: block; margin-top: 0px; margin-bottom: 25px" > </p>
 
-**_"어쩌면 우리의 취향은 우연의 횟수로 만들어진다. <br /> 어렸을 때 우연히 들은 노래에서 언젠가의 여행지를 정해 놓기도 하고, 영화나 드라마에서 접한 멋진 직업을 부모님 몰래 장래희망으로 삼기도 하고, 몇 권의 소설을 보며 좋아하는 장르가 서서히 만들어지기도 하니까."_**
+**"어쩌면 우리의 취향은 우연의 횟수로 만들어진다. <br /> 어렸을 때 우연히 들은 노래에서 언젠가의 여행지를 정해 놓기도 하고, 영화나 드라마에서 접한 멋진 직업을 부모님 몰래 장래희망으로 삼기도 하고, 몇 권의 소설을 보며 좋아하는 장르가 서서히 만들어지기도 하니까."**
 
 <p style="display: block; margin-top: 0px; margin-bottom: 48px" > </p>
 
