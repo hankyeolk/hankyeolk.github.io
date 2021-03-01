@@ -3,7 +3,7 @@ layout: post
 title: "원정대를 성공적(?)으로 마무리하면서."
 subtitle: "TF라고 하고 원정대라고 부르는.. 🧙‍♀️"
 date: 2021-02-27
-background: "/img/bg-review.jpg"
+background: "/img/posts/bg-review.jpg"
 tags: [work, review, database, backend]
 ---
 
