@@ -32,9 +32,9 @@ tags: [etc]
 <p style="display: block; margin-top: 0px; margin-bottom: 18px" > </p>
 
 ```bash
-defaults write com.apple.dock springboard-rows -int 12
-defaults write com.apple.dock springboard-columns -int 7
-killall dock
+$ defaults write com.apple.dock springboard-rows -int 12
+$ defaults write com.apple.dock springboard-columns -int 7
+$ killall dock
 ```
 
 <p style="display: block; margin-top: 0px; margin-bottom: 18px" > </p>
@@ -97,7 +97,7 @@ $ ZSH_THEME="fletcherm"
 
 <p style="display: block; margin-top: 0px; margin-bottom: 32px" > </p>
 
-### 4. Git Alias 등록하고 편하게 개발하기
+### 4. Git Alias 등록하고 git, editor 기본 설정하기
 
 Iterm으로 주로 git 명령어를 많이 활용한다. 그 과정에서 `git commit -m` 등과 같은 길고 번거로운 명령어를 매번 입력하기 귀찮아서 oh-my-zsh에 등록해서 사용중이다. `code . ~/.zshrc`를 입력해서 VSCode에서 쉽게 zsh 설정을 변경해주자.
 
@@ -115,6 +115,18 @@ alias mysql="mysql -u root -p"
 <p style="display: block; margin-top: 0px; margin-bottom: 18px" > </p>
 
 주로 위의 단축형 alias를 설정한다. 더 많지만 다 적기에는 너무 커스텀화 되어 있어서 소개하기 애매했다. 파일에 등록한 alias는 Iterm2에서 `source ~/.zshrc` 명령어를 입력해서 적용해 줄 수 있다.
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px" > </p>
+
+그 다음에 내 컴퓨터에서 버전 관리를 목적으로 사용하는 git과 터미널에서 사용할 에디터의 기본값을 설정해준다.
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px" > </p>
+
+```bash
+$ git config --global user.name "hankyeolk"
+$ git config --global user.email "email@email.com"
+$ git config --glboal core.editor "nano"
+```
 
 <p style="display: block; margin-top: 0px; margin-bottom: 32px" > </p>
 
