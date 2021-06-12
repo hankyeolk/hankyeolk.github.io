@@ -7,6 +7,8 @@ background: '/img/posts/post-dev.png'
 tags: [js, series, book]
 ---
 
+> 이 블로그 콘텐츠에는 책 '코어 자바스크립트'를 읽고 자바스크립트를 깊게 이해하는 내용이 담깁니다.
+
 ### 자바스크립트의 데이터 타입
 
 자바스크립트의 데이터 타입은 크게 2가지가 있다. 기본형(primitive)과 참조형(reference) 타입이다. 타입을 구분하는 기준에 대해서 명확하게 아는 것이 중요하다. 두 타입 모두 무언가를 **'복제'**하긴 한다.<br />
@@ -56,7 +58,7 @@ obj2.c = 10; // 객체 변수 영역의 주소는 동일하지만 c의 데이터
 // obj1 === obj2
 ```
 
-![data-duplicate](./img/posts/core-javascript/data-duplicate.png)
+![data-duplicate](../img/posts/core-javascript/data-duplicate.png)
 
 참조형 데이터가 '가변값'이라고 설명하기 위해서는 참조형 데이터 자체의 주소를 변경하는 경우가 아니라 그 내부의 프로퍼티 값들에 대한 주소를 변경할 때에만 성립한다.
 
