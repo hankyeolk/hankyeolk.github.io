@@ -4,7 +4,7 @@ title: 'Create-React-App 없이 리액트 프로젝트 보일러 플레이스 �
 subtitle: 'Without CRA - 자바스크립트편'
 date: 2021-08-08
 background: '/img/posts/post-dev.png'
-tags: [js, series, book]
+tags: [react, webpack, babel]
 ---
 
 # Create-React-App 없이 리액트 프로젝트 환경 구축하기
