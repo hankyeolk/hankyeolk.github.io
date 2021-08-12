@@ -196,3 +196,11 @@ const App = () => {
 
 ReactDom.render(<App />, document.getElementById('root'));
 ```
+
+<br />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wSzh8iSdYUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+> 부끄럽지만.. 회사에서 해당 내용으로 기술 발표 영상을 찍었다.
+
+<br />

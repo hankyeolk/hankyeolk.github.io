@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Create-React-App 없이 리액트 프로젝트 보일러 플레이스 세팅하기 - HK Blog
+    
+  </title>
+
+  <meta name="description" content="Create-React-App 없이 리액트 프로젝트 환경 구축하기">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- google analytics setting -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-134593008-1");
+  </script>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://hankyeolk.github.io/2021/08/08/withoutCRA.html">
+  <link rel="alternate" type="application/rss+xml" title="HK Blog" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">HK Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/posts/post-dev.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Create-React-App 없이 리액트 프로젝트 보일러 플레이스 세팅하기</h1>
+            
+            <h2 class="subheading">Without CRA - 자바스크립트편</h2>
+            
+            <span class="meta">
+              <a href="#">hankyeolk</a>
+              
+            </span>
+            <div class="tag-wrapper">
+              
+              
+              
+              <a href="/posts/?tag=js">
+                <span class="tag">Javascript</span>
+              </a>
+              
+              
+              
+              <a href="/posts/?tag=series">
+                <span class="tag">Series 🔖</span>
+              </a>
+              
+              
+              
+              <a href="/posts/?tag=book">
+                <span class="tag">Book 📚</span>
+              </a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1 id="create-react-app-없이-리액트-프로젝트-환경-구축하기">Create-React-App 없이 리액트 프로젝트 환경 구축하기</h1>
+
+<h3 id="직접-환경을-구축해보는-것에-대해서">직접 환경을 구축해보는 것에 대해서</h3>
+
+<p>CRA는 분명히 빠른 리액트 프로젝트를 시작하게 만들어주는 좋은 도구임에는 틀림없다. CRA를 통해서 프로젝트 자체를 빌드 할 수 있다. CRA가 나쁘다는 이야기를 하려고 이 글을 적는 것이 아님을 시작에 강조한다. <br /></p>
+
+<p>그럼에도 내가 이 기록을 남기는 이유는 너무 맹목적인 CRA를 남발하지 않기 위함이다. 웹팩으로 프로젝트를 구축해보면서 어떤 플러그인, 로더를 적소에 적용해야 하는지 배우기 위함이다. 바벨을 통해서 어떻게 언어의 문법간 호환성을 지켜야 하는지를 공부하기 위함이다. <br /></p>
+
+<p>그래도 나는 여전히 CRA가 너무 편하고 좋다. 필요하다면 CRA를 적극적으로 쓰는 것도 좋은 것 같다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="시작은-필요한-모듈-설치로부터">시작은 필요한 모듈 설치로부터</h3>
+
+<p>나는 yarn으로 노드 모듈을 설치하는 것을 좋아한다. 조금 더 빠르다는 느낌도 있고, 터미널에서 모듈을 받았을때 나오는 문구도 조금 더 세련된 것 같아서 그렇다. 그래서 기록의 대부분은 <code class="language-plaintext highlighter-rouge">yarn add</code>로 구성될 것 같다. <br /></p>
+
+<p>우선, 프로젝트를 시작할 폴더를 하나 만들고 <code class="language-plaintext highlighter-rouge">yarn init -y</code>로 노드 프로젝트임을 드러낸다. 그리고 리액트와 관련된 모듈을 설치한다. <code class="language-plaintext highlighter-rouge">yarn add react react-dom</code> react-dom은 react와 dom을 직접적으로 연결해주는 모듈이다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<blockquote>
+  <p>Babel <br /></p>
+</blockquote>
+
+<p>그 다음, 자바스크립트의 서로다른 문법간의 오류를 하나로 통합해줄 바벨의 모듈들을 설치한다. JSX와 ES6 이상의 문법을 다른 브라우저가 이해할 수 있도록 ES5 문법으로 변환해준다. <code class="language-plaintext highlighter-rouge">yarn add @babel/core @babel/preset-react @babel/preset-env</code> <br /></p>
+
+<p>바벨의 모듈은 앞에 ‘@’ 마크가 붙는 특징이 있다. 바벨에 대한 자세한 설명은 이전 TIL에 개발환경 구축의 내용을 정리한 것이 있다. 그 부분을 함께 참고하자. <a href="https://github.com/hankyeolk/TIL/blob/main/Dev_Env/babel.md">개발환경 이해하기 - Babel</a></p>
+
+<ul>
+  <li>@babel/preset-react : 리액트의 JSX 문법을 자바스크립트 코드로 변환해준다.</li>
+  <li>@babel/preset-env : ES6 이상의 자바스크립트 문법을 다른 브라우져에서도 호환 가능하도록 ES5로 변환해주는 프리셋이다.</li>
+</ul>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<blockquote>
+  <p>Webpack and Loader <br /></p>
+</blockquote>
+
+<p>프로젝트 환경 구축의 핵심인 웹팩과 관련 모듈을 설치한다. <br />
+<code class="language-plaintext highlighter-rouge">yarn add -D webpack webpack-cli webpack-dev-server babel-loader css-loader style-loader</code> <br /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">webpack-dev-server</code> : 이름에서도 알 수 있듯이 개발 모드에 필요한 서버를 구동해준다. 컴퓨터의 메모리를 빌려 웹팩을 구동하고 임0시 서버를 띄우는 역할을 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">css-loader, style-loader</code> : css 문법을 자바스크립트로 변환해주는 역할을 한다. / css-loader가 변환한 파일을 index.html의 <code class="language-plaintext highlighter-rouge">&lt;style&gt;</code> 태그에 넣는 역할을 한다.</li>
+</ul>
+
+<p>그 다음, 번들링 파일에 적용할 플러그인을 설치한다. <br />
+<code class="language-plaintext highlighter-rouge">yarn add -D html-webpack-plugin clean-webpack-plugin</code> <br /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">html-webpack-plugin</code>: html파일에 번들링된 리액트 코드를 삽입해준다. 그리고 dist 폴더에 번들링된 파일을 옮겨주는 역할을 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">clean-webpack-plugin</code> : 번들링이 완료될 때마다 이전의 번들링 결과를 제거해주는 역할을 한다.</li>
+</ul>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="이제-바벨-웹팩-설정-파일을-만들면서-프로젝트-환경을-완성해보자">이제 바벨, 웹팩 설정 파일을 만들면서 프로젝트 환경을 완성해보자.</h3>
+
+<blockquote>
+  <p>babel.config.js <br /></p>
+</blockquote>
+
+<p>바벨 설정 파일에는 프리셋을 잘 적용해주는 것이 중요하다. 프리셋은 바벨의 역할들을 모아둔 도구 상자라고 생각하면 편하다. <code class="language-plaintext highlighter-rouge">.babelrc</code> 이름으로 파일 이름을 지을 수도 있다. 이렇게 사용할 프리셋을 <code class="language-plaintext highlighter-rouge">presets</code> 항목에 배열로 넣어주면된다.<br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// babel.config.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">@babel/preset-env</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">@babel/preset-react</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<blockquote>
+  <p>webpack.config.js <br /></p>
+</blockquote>
+
+<p>가장 중요한 설정은 웹팩 설정이다. 실질적으로 웹팩으로 어떻게 번들링을 하는지에 따라서 프로젝트의 결과가 완전히 달라질 수 있다. <code class="language-plaintext highlighter-rouge">webpack.config.js</code>파일을 구축하면서 꼼꼼하게 알아보자.<br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// webpack.config.js</span>
+<span class="kd">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">webpack</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">html-webpack-plugin</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">CleanWebpackPlugin</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">clean-webpack-plugin</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">dotenv</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">dotenv</span><span class="dl">'</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>설정에서 사용하는 개발 모드/프로덕션 모드를 구분하고 개발 서버의 포트 변호를 환경변수로 관리하기 위해서 dotenv를 설치해서 사용했다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 48px"> </p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">mode</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">mode</span><span class="p">,</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./src/index.js</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/dist</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bundle.[hash].js</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">publicPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// path.resove 형태로 사용할 수도 있다.</span>
+    <span class="c1">// 그러면 node의 기본 모듈 'path'를 불러와야 한다.</span>
+    <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">.js</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">.jsx</span><span class="dl">'</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>번들링이 시작될 곳은 리액트 프로젝트에서 보통 리액트 돔에 랜더링을 거는 <code class="language-plaintext highlighter-rouge">index.js</code>로 정했다. 엔트리 포인트는 개발자가 알아서 정해주면 된다. 번들링 결과는 보통 dist 폴더에 해쉬가 된채로 저장된다. 번들링을 할 파일은 ‘.js, .jsx’의 확장자를 가진 파일이다. 나는 보통 자바스크립트로 리액트 프로젝트를 할 경우 컴포넌트 파일명을 ‘.jsx’ 확장자로 짓는다. <br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...,</span>
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">js|jsx</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+        <span class="na">exclude</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/node_modules/</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">babel-loader</span><span class="dl">'</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="p">[{</span> <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">style-loader</span><span class="dl">'</span> <span class="p">},</span> <span class="p">{</span> <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">css-loader</span><span class="dl">'</span> <span class="p">}]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>로더는 rules 항목에서 지정해줄 수 있다. 중점적으로 신경써야 하는 것은 로더의 순서다. 웹팩은 등록한 로더의 배열에서 뒤의 요소부터 번들링에 반영한다. css를 자바스크립트로 변환한 다음 style 태그에 넣어주어야 하기 때문에 위의 순서를 가진다. 또한 node_modules 폴더의 모든 모듈들을 다 번들링 할 필요 없기 때문에 이걸 제외해주는 것도 중요하다.<br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...,</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">(),</span>
+    <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+      <span class="na">template</span><span class="p">:</span> <span class="dl">'</span><span class="s1">public/index.html</span><span class="dl">'</span>
+    <span class="p">}),</span>
+    <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
+      <span class="na">mode</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">mode</span><span class="p">,</span>
+      <span class="na">port</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">port</span>
+    <span class="p">})</span>
+  <span class="p">],</span>
+  <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">localhost</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">port</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+    <span class="na">open</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">hot</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>플러그인은 각 생성자 함수로 인스턴스를 만들어주는 방식으로 적용한다. <code class="language-plaintext highlighter-rouge">DefinePlugin</code>의 경우 웹팩의 기본 플러그인이라서 webpack으로 부터 가지고 왔다. <code class="language-plaintext highlighter-rouge">.env</code> 파일에 등록한 개발 모드와 포트 넘버를 등록해서 사용할 수 있게 해준다. <br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">devServer</code>는 개발 서버를 열어주는 용도다. ‘hot’ 키워드를 true 값으로 설정해서 변화가 발생하면 바로 번들링이 발동되고 서버에 반영될 수 있도록 설정해주면 우리가 react 프로젝트에서 늘 봤던 ‘yarn start’를 만들어준다. 물론 스크립트에 등록을 해야한다. <br /></p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 48px"> </p>
+
+<h3 id="packagejson-파일에-스크립트-등록하고-리액트-개발-시작하기">package.json 파일에 스크립트 등록하고 리액트 개발 시작하기</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack serve --progress --mode development"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>“start” 명령어에 ‘webpack-dev-server’를 등록해서 리액트 스크립트가 동작할 수 있도록 설정한다. ‘hot’ 키워드가 등록되어 있기때문에 프로젝트는 리액트의 사소한 변화를 반영할 수 있다. “build” 명령어를 동작하면 dist 폴더에 번들링된 파일들이 생성될 것이다. <br /></p>
+
+<p>이제 우리에게 남은 것은 <code class="language-plaintext highlighter-rouge">public/index.html</code>을 생성하고 <code class="language-plaintext highlighter-rouge">src/index.js</code>에 가벼운 리액트 코드를 작성하는 것이다. 물론 <code class="language-plaintext highlighter-rouge">yarn start</code> 명령어로 웹팩을 돌리고 3000번 포트(.env에 설정해준)에서 결과를 확인하는 것은 덤이다. <br /></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- public/index.html --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=divice-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>react-twittler<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"root"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// index.js</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ReactDom</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">hello</span> <span class="nx">hankyeol</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span><span class="p">};</span>
+
+<span class="nx">ReactDom</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wSzh8iSdYUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<blockquote>
+  <p>부끄럽지만.. 회사에서 해당 내용으로 기술 발표 영상을 찍었다.</p>
+</blockquote>
+
+<p><br /></p>
+
+
+        <hr>
+
+          <script src="https://utteranc.es/client.js"
+            repo="hankyeolk/hankyeolk.github.io"
+            issue-term="pathname"
+            label="comments"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async>
+            </script>
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left"
+            href="/2021/06/30/coreJavascript3.html" data-toggle="tooltip"
+            data-placement="top" title="[시리즈 - 코어 자바스크립트] 자바스크립트 프로토타입">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:2247han@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/hankyeolk">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://instagram.com/">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://rocketpunch.com/@2247han">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
+              </span>
+              
+            </a>
+          </li>
+          
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; hankyeolk 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/tags.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134593008-1');
+</script>
+
+
+
+</body>
+
+</html>

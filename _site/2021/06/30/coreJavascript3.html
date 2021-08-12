@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [시리즈 - 코어 자바스크립트] 자바스크립트 프로토타입 - HK Blog
+    
+  </title>
+
+  <meta name="description" content="이 블로그 콘텐츠에는 책 ‘코어 자바스크립트’를 읽고 자바스크립트를 깊게 이해하는 내용이 담깁니다.">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- google analytics setting -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-134593008-1");
+  </script>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://hankyeolk.github.io/2021/06/30/coreJavascript3.html">
+  <link rel="alternate" type="application/rss+xml" title="HK Blog" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">HK Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/posts/post-dev.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>[시리즈 - 코어 자바스크립트] 자바스크립트 프로토타입</h1>
+            
+            <h2 class="subheading">내실을 다지는 자바스크립트 공부</h2>
+            
+            <span class="meta">
+              <a href="#">hankyeolk</a>
+              
+            </span>
+            <div class="tag-wrapper">
+              
+              
+              
+              <a href="/posts/?tag=js">
+                <span class="tag">Javascript</span>
+              </a>
+              
+              
+              
+              <a href="/posts/?tag=series">
+                <span class="tag">Series 🔖</span>
+              </a>
+              
+              
+              
+              <a href="/posts/?tag=book">
+                <span class="tag">Book 📚</span>
+              </a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <blockquote>
+  <p>이 블로그 콘텐츠에는 책 ‘코어 자바스크립트’를 읽고 자바스크립트를 깊게 이해하는 내용이 담깁니다.</p>
+</blockquote>
+
+<h2 id="자바스크립트-프로토타입">자바스크립트 프로토타입</h2>
+
+<hr />
+
+<p>자바스크립트가 프로토타입 기반의 언어라는 점은 많이 들어서 알고 있을 것이다. 클래스 기반의 언어에 있는 상속과는 다르게 특정한 객체 하나를 원형(prototype)으로 삼고 이를 복제하는 방식으로 상속의 훙내낸다. 프로토타입의 개념을 한 번 이해하는 것이 어렵지만 이번에 해내보자.</p>
+
+<h3 id="기본">기본</h3>
+
+<p><img src="/img/posts/core-javascript/prototype.png" style="width: 80%; text-align: center; border: 1px solid gray;" /> <br /></p>
+
+<p>위의 이미지의 흐름을 정리하면 다음과 같다.</p>
+
+<ol>
+  <li>어떤 생성자 함수를 new 키워드와 함께 호출하면 생성자에서 정의된 내용을 바탕으로 새로운 인스턴스(instance)가 생성된다.</li>
+  <li>인스턴스가 생성될때 <code class="language-plaintext highlighter-rouge">__proto__</code>라고 하는 프로퍼티가 자동으로 부여된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">__proto__</code> 프로퍼티는 Constructor에 있는 prototype 이라고 하는 프로퍼티를 참조한다.</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">prototype</code>와 <code class="language-plaintext highlighter-rouge">__proto__</code>는 모두 객체다. prototype 객체에는 인스턴스가 사용할 메서드를 저장한다. 이를 참조하는 <code class="language-plaintext highlighter-rouge">__proto__</code>를 통해 인스턴스가 이 메서드들에 접근할 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">dobby</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Dobby</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">dobby</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">//undefined</span>
+</code></pre></div></div>
+
+<p>위의 예시에서 <code class="language-plaintext highlighter-rouge">dobby.__proto__.getName()</code>을 찍어보면 undefined가 나오는 것을 알 수 있다. 함수를 메서드로 호출하면 ‘.’ 앞의 객체가 바로 this가 된다. 그래서 getName 메서드가 묶인 this는 <code class="language-plaintext highlighter-rouge">dobby.__proto__</code> 객체가 된다. 이 객체 내부에는 ‘name’이라는 프로퍼티가 없기 때문에 정의되지 않은 식별자를 찾을때 뱉는 undefined가 나온 것이다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">dobby</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Dobby</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">dobby</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// 'Dobby'</span>
+
+<span class="nx">dobby</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// 'Dobby'</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">dobby.getName()</code> 처럼 <code class="language-plaintext highlighter-rouge">__proto__</code>를 제외하면 this 걱정없이 메서드를 사용할 수 있다. 그 이유는 <code class="language-plaintext highlighter-rouge">__proto__</code>가 생략 가능한 프로퍼티이기 때문이다. 자바스크립트의 단순한 문법적인 측면이기 때문에 생략 가능하다는 정도로만 이해하고 넘어가자.</p>
+
+<p>정리하면, ‘new Constructor() 형태로 인스턴스를 생성하면 생략 가능한 프로퍼티 <code class="language-plaintext highlighter-rouge">__proto__</code>가 생성되고 이것은 Constructor의 prototype 객체를 참조한다.’</p>
+
+<p>Array라고 하는 생성자를 직접 콘솔에 찍어보면 prototype과 기본 내장 메서드를 이해할 수 있다.</p>
+
+<p><br /></p>
+
+<h3 id="prototype-객체-내부의-constructor-프로퍼티">prototype 객체 내부의 constructor 프로퍼티</h3>
+
+<p>생성자 함수의 prototype 객체에는 constructor라고 하는 자기 자신을 참조하는 프로퍼티가 있다. 생성된 <code class="language-plaintext highlighter-rouge">__proto__</code> 객체에도 존재한다. 이것은 인스턴스와의 관계를 나타내기 위해 필요한 정보인데, 인스턴스의 원형이 무엇인지를 알 수 있는 수단 역할을 한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Array</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="nx">array</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Array</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="nx">array</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Array</span><span class="p">;</span> <span class="c1">// true</span>
+
+<span class="kd">const</span> <span class="nx">array2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="p">.</span><span class="kd">constructor</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">array2</span><span class="p">);</span> <span class="c1">// [3, 4]</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="프로토타입-체인">프로토타입 체인</h3>
+
+<h4 id="메서드-오버라이드">메서드 오버라이드</h4>
+
+<p>prototype 객체를 참조하는 <code class="language-plaintext highlighter-rouge">__proto__</code>를 생략할 수 있기 때문에, 인스턴스는 prototype에 정의된 프로퍼티나 메서드를 자신의 것처럼 사용할 수 있는 것처럼 보인다. 아래의 예시를 한 번 보자.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">IU</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">이지은</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">IU</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">'</span><span class="s1">IU는 </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">이다.</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">IU</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span> <span class="c1">// 'IU는 이지은이다.'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">IU</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">getName</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">IU</span><span class="p">));</span> <span class="c1">// '이지은'</span>
+</code></pre></div></div>
+
+<p>IU 인스턴스에 있는 메서드가 호출된다. Person prototype 객체에 등록된 getName 메서드와 동일한 함 수 명이기 때문에 원본이 있는 그 상태에서 다른 대상을 얹은 것이다.</p>
+
+<p>오버라이딩 되지 않고, prototype에 등록된 메서드가 동자가헤 하려면, IU 인스턴스에 있는 <code class="language-plaintext highlighter-rouge">__proto__</code>에다가 IU 인스턴스를 바라볼 수 있게 등록하면 된다. call, apply 메서드로 바인딩을 해주면 된다. 원본 메서드를 사용하기 위해서 우회를 해야한다는 점이 있다.</p>
+
+<p><br /></p>
+
+<h3 id="프로토타입-체인-1">프로토타입 체인</h3>
+
+<p><code class="language-plaintext highlighter-rouge">console.dir([1, 2])</code>를 찍어보면 우리에게 익숙한 pop, push와 같은 메서드가 <code class="language-plaintext highlighter-rouge">__proto__</code> 프로퍼티 안에 있다는 것을 볼 수 있다. constructor는 <code class="language-plaintext highlighter-rouge">f Array()</code>로 배열 생성자 함수를 가르키고 있는 것으로 보인다. 그런데 <strong>proto</strong>안에 또 다른 <strong>proto</strong>가 있는 것을 볼 수 있다.</p>
+
+<p>그것은 <code class="language-plaintext highlighter-rouge">console.dir({a: 1})</code>을 찍어봤을 때의 <strong>proto</strong>와 동일하다는 것을 알 수 있다. 이것은 모든 객체의 <strong>proto</strong>에 Object.prototype이 연결되기 때문이다. 아래의 그림처럼 연결되어 있는 것이다.</p>
+
+<p><img src="/img/posts/core-javascript/prototype2.png" style="width: 80%; text-align: center; border: 1px solid gray;" /> <br /></p>
+
+<p><strong>proto</strong>는 생략이 가능한 프로퍼티이기 때문에 배열은 Object.prototype의 내부 메서드를 자신의 것처럼 사용할 수 있다. <code class="language-plaintext highlighter-rouge">array(.__proto__)(.__proto__).hasOwnProperty();</code> 이렇게 말이다.</p>
+
+<p>이런 것처럼 <code class="language-plaintext highlighter-rouge">__proto__</code> 프로퍼티 내부에 <code class="language-plaintext highlighter-rouge">__proto__</code> 프로퍼티가 연쇄적으로 이어진 형태를 프로토타입 체인이라고 한다. 이 체인을 따라가며 검색하는 과정을 프로토타입 체이닝이라고 한다.</p>
+
+
+        <hr>
+
+          <script src="https://utteranc.es/client.js"
+            repo="hankyeolk/hankyeolk.github.io"
+            issue-term="pathname"
+            label="comments"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async>
+            </script>
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left"
+            href="/2021/06/19/coreJavascript2.html" data-toggle="tooltip"
+            data-placement="top" title="[시리즈 - 코어 자바스크립트] 자바스크립트 실행 컨텍스트">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/2021/08/08/withoutCRA.html"
+            data-toggle="tooltip" data-placement="top" title="Create-React-App 없이 리액트 프로젝트 보일러 플레이스 세팅하기">Next<span
+              class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:2247han@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/hankyeolk">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://instagram.com/">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://rocketpunch.com/@2247han">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
+              </span>
+              
+            </a>
+          </li>
+          
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; hankyeolk 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/tags.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134593008-1');
+</script>
+
+
+
+</body>
+
+</html>
