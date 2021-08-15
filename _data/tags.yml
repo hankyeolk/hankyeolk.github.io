@@ -11,7 +11,7 @@
 # - nest
 # - gl
 - env
-# - git
+- git
 - webpack
 - work
 - book
@@ -20,5 +20,4 @@
 - database
 - etc
 - react
-- webpack
 - babel

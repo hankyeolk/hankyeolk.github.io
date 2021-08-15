@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://hankyeolk.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hankyeolk.github.io/" rel="alternate" type="text/html" /><updated>2021-08-12T09:05:19+09:00</updated><id>https://hankyeolk.github.io/feed.xml</id><title type="html">HK Blog</title><subtitle>웹 개발자 강한결의 개발 블로그입니다.</subtitle><author><name>hankyeolk</name></author><entry><title type="html">Create-React-App 없이 리액트 프로젝트 보일러 플레이스 세팅하기</title><link href="https://hankyeolk.github.io/2021/08/08/withoutCRA.html" rel="alternate" type="text/html" title="Create-React-App 없이 리액트 프로젝트 보일러 플레이스 세팅하기" /><published>2021-08-08T00:00:00+09:00</published><updated>2021-08-08T00:00:00+09:00</updated><id>https://hankyeolk.github.io/2021/08/08/withoutCRA</id><content type="html" xml:base="https://hankyeolk.github.io/2021/08/08/withoutCRA.html">&lt;h1 id=&quot;create-react-app-없이-리액트-프로젝트-환경-구축하기&quot;&gt;Create-React-App 없이 리액트 프로젝트 환경 구축하기&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://hankyeolk.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hankyeolk.github.io/" rel="alternate" type="text/html" /><updated>2021-08-15T15:35:58+09:00</updated><id>https://hankyeolk.github.io/feed.xml</id><title type="html">HK Blog</title><subtitle>웹 개발자 강한결의 개발 블로그입니다.</subtitle><author><name>hankyeolk</name></author><entry><title type="html">SSH로 GitHub 연결하기</title><link href="https://hankyeolk.github.io/2021/08/15/githubSSH.html" rel="alternate" type="text/html" title="SSH로 GitHub 연결하기" /><published>2021-08-15T00:00:00+09:00</published><updated>2021-08-15T00:00:00+09:00</updated><id>https://hankyeolk.github.io/2021/08/15/githubSSH</id><content type="html" xml:base="https://hankyeolk.github.io/2021/08/15/githubSSH.html">&lt;p&gt;어느때와 동일하게 로컬에서 업데이트한 코드를 내 원격 GitHub Repository에 push 하려고 할 때, 갑자기 github의 인증 관련 에러가 터미널을 덮었다. 에러의 요지는 이렇다. ‘2021년 8월 13일부로 GitHub 계정의 비밀번호로 원격의 git 동작을 제어하는 권한을 제한한다’는 것이다. 작년 7월 &lt;a href=&quot;https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/&quot;&gt;GitHub Blog&lt;/a&gt;에 글로 미리 공지를 했다는데.. CLI를 통해서 https 주소로 GitHub 원격 저장소에 접근하는 나는 당황하지 않을 수 없었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210815/1.png&quot; style=&quot;width: 100%; text-align: center; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 15px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;근데, 깃헙 블로그에 &lt;em&gt;‘the following customers remain unaffected by this change’&lt;/em&gt;라는 예외 조항이 있었다. 그 중 하나가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSH-based&lt;/code&gt; 인증을 한 사람은 괜찮다는 것이었다. 서로 다른 컴퓨터간의 통신에서 ‘보안성’을 높여주는 SSH 프로토콜 방식 기반의 코드 관리가 가능하다고는 알고 있었다. 다만, https url 형식이 너무 편해서 시도할 생각을 하지 않고 있었다. 경우가 경우인 만큼, 이번에 SSH 프로토콜 방식으로 변경하였다. 그 경험을 공유한다.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 45px&quot;&gt; &lt;/p&gt;
+
+&lt;h4 id=&quot;ssh&quot;&gt;SSH&lt;/h4&gt;
+
+&lt;p&gt;Secure SHell의 줄임 표현인 SSH는 원격 컴퓨터와의 통신을 위한 프로토콜이다. Secure하다는 것이 강조되기 때문에 ‘보안’에 집중한 프로토콜임을 알 수 있다. SSH는 기본적으로 2가지의 키로 암호화, 복호화 과정을 거쳐서 통신한다.&lt;/p&gt;
+
+&lt;p&gt;SSH에서 2가지 키가 사용된다고 했는데, 그것은 각각 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public key (공개키)&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private key (비밀키)&lt;/code&gt;다. SSH 키를 생성하면 공개키와 비밀키가 동시에 생성된다. 비밀키는 내 로컬 컴퓨터의 특정 장소에, ‘옵셔널하게 (유저에 의향에 의해) 비밀키 확인을 위한 비밀번호 설정을 할 수 있다.’, 저장된다. 공개키는 리모트, 즉 통신하려고 하는 원격 저장소(나의 경우는 GitHub)에 부여한다.&lt;/p&gt;
+
+&lt;p&gt;원격 저장소와 통신을 하기 위해서, 요청을 보내는 내 컴퓨터(로컬 환경)에서는 원격 컴퓨터의 공개키와 내 비밀키를 맞추어보고 정확한 ‘한 쌍’인지를 파악한다. 서로가 한 쌍의 키라는 것이 증명되면 두 컴퓨터 사이에 ‘암호화된’ 채널이 형성되고 서로의 키로 암호화 복호화하는 과정으로 데이터를 주고 받을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;GitHub의 원격 저장소의 코드를 복제하고(git clone), 내가 로컬환경에서 작업한 코드를 GitHub 원격 저장소에 올리는(git push) 작업 역시 로컬-원격 저장소간의 통신이다. 그렇기 때문에 ‘보안’이 강화된 SSH 방식을 사용하면 더욱 안전하게 코드 버전을 관리할 수 있게된다.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 45px&quot;&gt; &lt;/p&gt;
+
+&lt;h4 id=&quot;ssh-방식으로-github-연결하기&quot;&gt;SSH 방식으로 GitHub 연결하기&lt;/h4&gt;
+
+&lt;p&gt;SSH를 이용해서 GitHub과 코드를 주고 받기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSH 키&lt;/code&gt;를 가장 먼저 생성해야 한다. 나는 맥(macOS)을 사용하고 있기 때무네 그것을 기반으로 작성하겠다. 사실 다른 운영체제들도 방법은 비슷하다.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 24px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 로컬 경로에서 ~/.ssh 를 찾아들어간다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/.ssh
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;id_rsa.pub
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 24px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;해당 경로에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; 커맨드로 존재하는 디렉토리 또는 파일을 살핀다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id_dsa&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id_rsa.pub&lt;/code&gt;와 같은 파일이 있을 수 있다. 만약 이 파일이 없다면 키 생성기로 키를 생성해야 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210815/4.png&quot; style=&quot;width: 50%; text-align: center; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 24px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;파일이 이미 생성되어 있다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat&lt;/code&gt; 커맨드로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id_rsa.pub&lt;/code&gt; 파일을 한 번 읽어보면 좋다. ssh-rsa~ 로 시작하는 아주 긴 암호화된 키가 보일 것이다. 확장자가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.pub&lt;/code&gt;인 것을 보면 이미 눈치챘겠지만, 해당 파일의 키가 공개키다.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 45px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1-1. ssh-keygen으로 키 생성하기&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;macOS에는 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh-keygen&lt;/code&gt;이라고 하는 프로그램이 있다. ~/.ssh 경로에 아무런 파일이 없다면 루트 경로에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen&lt;/code&gt; 이라는 커맨드를 입력하여 SSH를 위한 키를 생성하면 된다.&lt;/p&gt;
+
+&lt;p&gt;그 과정에서 아마 키를 조회하기 위한 비밀번호 설저을 물어본다. 나 같은 경우에는 비밀번호 입력 자체를 번거로워하지 않기 때문에 꼭 설정했다. 비밀번호를 생성했다면 다시 ~/.ssh 경로에 들어가서 파일이 잘 생성되었는지 확인해보자.&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 45px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 공개키 GitHub에 등록하기&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 원격 저장소인 GitHub의 내 계정에 내 로컬 컴퓨터에서 생성한 SSH 공개키를 등록해준다. 등록은 GitHub 👉 (우측 상단의 유저 아이콘) Settings 👉 SSH and GPG Keys 👉 (초록색) New SSH Key 버튼 클릭으로 등록하면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210815/5.png&quot; style=&quot;width: 100%; text-align: center; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 24px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;등록을 완료했다면 로컬 터미널에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh -T git@github.com&lt;/code&gt; 명령어로 SSH 방식의 인증이 잘 되었는지 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/210815/2.png&quot; style=&quot;width: 50%; text-align: center; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 45px&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;**3. **&lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="git" /><summary type="html">어느때와 동일하게 로컬에서 업데이트한 코드를 내 원격 GitHub Repository에 push 하려고 할 때, 갑자기 github의 인증 관련 에러가 터미널을 덮었다. 에러의 요지는 이렇다. ‘2021년 8월 13일부로 GitHub 계정의 비밀번호로 원격의 git 동작을 제어하는 권한을 제한한다’는 것이다. 작년 7월 GitHub Blog에 글로 미리 공지를 했다는데.. CLI를 통해서 https 주소로 GitHub 원격 저장소에 접근하는 나는 당황하지 않을 수 없었다.</summary></entry><entry><title type="html">Create-React-App 없이 리액트 프로젝트 보일러 플레이스 세팅하기</title><link href="https://hankyeolk.github.io/2021/08/08/withoutCRA.html" rel="alternate" type="text/html" title="Create-React-App 없이 리액트 프로젝트 보일러 플레이스 세팅하기" /><published>2021-08-08T00:00:00+09:00</published><updated>2021-08-08T00:00:00+09:00</updated><id>https://hankyeolk.github.io/2021/08/08/withoutCRA</id><content type="html" xml:base="https://hankyeolk.github.io/2021/08/08/withoutCRA.html">&lt;h1 id=&quot;create-react-app-없이-리액트-프로젝트-환경-구축하기&quot;&gt;Create-React-App 없이 리액트 프로젝트 환경 구축하기&lt;/h1&gt;
 
 &lt;h3 id=&quot;직접-환경을-구축해보는-것에-대해서&quot;&gt;직접 환경을 구축해보는 것에 대해서&lt;/h3&gt;
 
@@ -202,7 +272,7 @@
   &lt;p&gt;부끄럽지만.. 회사에서 해당 내용으로 기술 발표 영상을 찍었다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="js" /><category term="series" /><category term="book" /><summary type="html">Create-React-App 없이 리액트 프로젝트 환경 구축하기</summary></entry><entry><title type="html">[시리즈 - 코어 자바스크립트] 자바스크립트 프로토타입</title><link href="https://hankyeolk.github.io/2021/06/30/coreJavascript3.html" rel="alternate" type="text/html" title="[시리즈 - 코어 자바스크립트] 자바스크립트 프로토타입" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>https://hankyeolk.github.io/2021/06/30/coreJavascript3</id><content type="html" xml:base="https://hankyeolk.github.io/2021/06/30/coreJavascript3.html">&lt;blockquote&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="react" /><category term="webpack" /><category term="babel" /><summary type="html">Create-React-App 없이 리액트 프로젝트 환경 구축하기</summary></entry><entry><title type="html">[시리즈 - 코어 자바스크립트] 자바스크립트 프로토타입</title><link href="https://hankyeolk.github.io/2021/06/30/coreJavascript3.html" rel="alternate" type="text/html" title="[시리즈 - 코어 자바스크립트] 자바스크립트 프로토타입" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>https://hankyeolk.github.io/2021/06/30/coreJavascript3</id><content type="html" xml:base="https://hankyeolk.github.io/2021/06/30/coreJavascript3.html">&lt;blockquote&gt;
   &lt;p&gt;이 블로그 콘텐츠에는 책 ‘코어 자바스크립트’를 읽고 자바스크립트를 깊게 이해하는 내용이 담깁니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -570,7 +640,7 @@
 
 &lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 18px&quot;&gt; &lt;/p&gt;
 
-&lt;p&gt;github을 알기 시작하고 jekyll과 jQuery로 블로그를 만들 때 다시 터미널을 열어야 했다. homebrew(홈브루)&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;로 루비를 설치하고 git을 연결해주는 작업만 정말 하루 종일 검색하면서 진행했었다. 블로그를 구축한 다음에도 git 명령어를 통해서 포스팅하는 작업을 위해 터미널을 열었었다.&lt;/p&gt;
+&lt;p&gt;github을 알기 시작하고 jekyll과 jQuery로 블로그를 만들 때 다시 터미널을 열어야 했다. homebrew(홈브루)&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;로 루비를 설치하고 git을 연결해주는 작업만 정말 하루 종일 검색하면서 진행했었다. 블로그를 구축한 다음에도 git 명령어를 통해서 포스팅하는 작업을 위해 터미널을 열었었다.&lt;/p&gt;
 
 &lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;
 
@@ -889,135 +959,4 @@
 
 &lt;p&gt;&lt;img src=&quot;/img/posts/210213/writeUsage.jpeg&quot; style=&quot;width: 100%; border: 1px solid gray;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
 
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="book" /><summary type="html">가벼운 독서 감상</summary></entry><entry><title type="html">🧐 SQL과 NoSQL에 대해서 짧은 끄적임</title><link href="https://hankyeolk.github.io/2021/02/10/sqlvsnosql.html" rel="alternate" type="text/html" title="🧐 SQL과 NoSQL에 대해서 짧은 끄적임" /><published>2021-02-10T00:00:00+09:00</published><updated>2021-02-10T00:00:00+09:00</updated><id>https://hankyeolk.github.io/2021/02/10/sqlvsnosql</id><content type="html" xml:base="https://hankyeolk.github.io/2021/02/10/sqlvsnosql.html">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;목차&lt;/code&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#SQL&quot;&gt;SQL&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#NoSQL&quot;&gt;NoSQL&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#SQL과-NoSQL의-차이점&quot;&gt;SQL과 NoSQL의 차이점&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#SQL과-NoSQL-중에서-어떤-것을-사용해야-하나요?&quot;&gt;SQL과 NoSQL 중에서 어떤 것을 사용해야 하나요?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;데이터베이스는 크게 &lt;strong&gt;관계형 데이터베이스&lt;/strong&gt;와 &lt;strong&gt;비관계형 데이터베이스&lt;/strong&gt;로 양분된다. 관계형 데이터베이스는 &lt;strong&gt;SQL&lt;/strong&gt;을 기반으로 하고 비관계형 데이터베이스는 &lt;strong&gt;NoSQL&lt;/strong&gt;로 데이터를 다룬다. SQL과 NoSQL은 만들어진 방식, 저장하는 정보의 종류, 그리고 저장하는 방법 등에 차이가 있다. &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;관계형 데이터베이스는 구조화 되어있는 데이터베이스를 의미한다. 전화번호와 주소, 이름이 같이 적혀있는 전화번호부와 비슷한 &lt;em&gt;구조화된 스키마&lt;/em&gt;를 미리 작성해야한다. 이와 반대로, 비관계형 데이터베이는 구조화되지 않고, 분산되어있다. 컴퓨터에 생성한 하나의 폴더에 여러 사람의 주소나 전화번호, 쇼핑몰 주소등을 모두 담을 수 있는 형식과 비슷하다고 생각하면 편하다.&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;sql&quot;&gt;SQL&lt;/h2&gt;
-
-&lt;p&gt;관계형 데이터베이스는 행(row)과 열(column)로 구성된 테이블에 데이터를 저장한다. 각각의 행은 하나의 속성에 대한 정보를 저장하고, 열에는 각각의 데이터 형식에 맞는 데이터가 저장된다. 관계형 데이터베이스에 저장되어 관리되는 데이터는 SQL이라고 하는 구조화된 쿼리 언어로 &lt;strong&gt;생성(Create), 조회(Read), 갱신(Update), 삭제(Delete)&lt;/strong&gt;의 행동을 진행한다. 대표적인 관계형 데이터베이스에는 &lt;em&gt;MySQL, Oracle, SQLite, Postgres, MariaDB&lt;/em&gt;가 있다.&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 25px&quot;&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;nosql&quot;&gt;NoSQL&lt;/h2&gt;
-
-&lt;p&gt;NoSQL 기반의 비관계형 데이터베이스는 보통 다음과 같은 타입으로 구성된다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Key-Value 타입&lt;/strong&gt; : 데이터를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Key-Value&lt;/code&gt;의 쌍을 속성으로 하는 배열 형태로 저장한다. 여기서 &lt;strong&gt;Key&lt;/strong&gt;는 속성 이름을 뜻하고, &lt;strong&gt;Value&lt;/strong&gt;는 속성에 연결된 데이터 값을 의미한다. &lt;em&gt;Redis, Dynamo&lt;/em&gt; 등이 대표적인 Key-Value 형식의 데이터베이스다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;문서형(Document) 데이터베이스&lt;/strong&gt; : 데이터를 테이블이 아닌 문서처럼 저장하는 데이터베이스를 의미한다. JSON 유사 형식으로 데이터를 문서화한다. 각각의 문서는 하나의 속성에 대한 데이터를 가지고 컬렉션이라고 하는 그룹으로 묶어서 관리한다. 대표적인 문서형 데이터베이스에는 &lt;em&gt;MongoDB&lt;/em&gt;가 있다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Wide-Column 데이터베이스&lt;/strong&gt; : 데이터베이스의 열(column)에 대한 데이터 관리를 집중하는 데이터베이스다. 각 열에는 key-value 형식으로 데이터가 저장되고, 컬럼 패밀리(column families)라고 하는 열의 집합체 단위로 데이터를 처리할 수 있다. 하나의 행에 많은 열을 포함할 수 있다는 유연성이 있다. 데이터 처리에 필요한 열을 유연하게 선택할 수 있다는 점에서 큰 규모의 데이터 분석에 주로 사용되는 데이터베이스 형식이다. 대표적인 wide-column 데이터베이스에는 &lt;em&gt;Cassandra, HBase&lt;/em&gt;가 있다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;그래프(Graph) 데이터베이스&lt;/strong&gt; : 자료구조의 그래프와 비슷한 형식으로 데이터 간의 관계를 구성하는 데이터베이스다. 데이터는 노드(nodes)에 속성별(entities)로 저장된다. 각 노드간의 관계는 선(edge)으로 연결된다. 대표적인 그래프 데이터베이스에는 &lt;em&gt;Neo4J, InfiniteGraph&lt;/em&gt;가 있다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;sql과-nosql의-차이점&quot;&gt;SQL과 NoSQL의 차이점&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;데이터 저장(Storage)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;관계형 데이터베이스는 SQL을 이용해서 데이터를 테이블에 저장한다. 스키마를 기반으로 정해진 형식에 맞게 데이터를 저장한다.&lt;/li&gt;
-  &lt;li&gt;NoSQL은 이와는 사뭇 다른 형태로 데이터를 저장한다. 위에서 설명된 것처럼, key-value, document, graph, wide-column 형식등으로 다양하게 데이터를 저장한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 20px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;스키마(Schema)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;SQL을 사용하려면 형식이 고정된 스키마가 필요하다. 처리하려는 데이터 속성별로 열에 대한 정보가 미리 정해져야 한다는 의미다. 스키마는 나중에 변경할 수 있지만, 그럴 경우 전체 데이터베이스를 수정하거나 오프라인으로 전환할 필요가 있다.&lt;/li&gt;
-  &lt;li&gt;NoSQL은 동적인 스키마를 기반할 수 있다. NoSQL로 즉시 열을 추가할 수 있고, 개별 속성에 대해서 모든 열에 대한 데이터를 반드시 입력하지 않아도 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 20px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;쿼리(Querying)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;쿼리는 데이터베이스에 대해서 정보를 요청하는 행동을 의미한다. 관계형 데이터베이스는 테이블의 형식과 테이블간의 관계에 맞춰서 데이터를 요청한다. 그래서 SQL과 같은 구조화된 쿼리 언어를 사용하는 것이다.&lt;/li&gt;
-  &lt;li&gt;비관계형 데이터베이스의 쿼리는 데이터 그룹 자체를 조회하는 것에 초점을 둔다. 그래서 구조화 되지 않은 쿼리 언어로도 데이터 요청이 가능하다. UnQL(UnStructured Query Language)을 사용한다고도 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 20px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;확장성(Scalability)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;SQL 기반의 관계형 데이터베이스는 보통 수직적으로 확장한다. 데이터베이스가 구축된 하드웨어의 성능을 많이 이용하기 때문에 고비용이 든다. 복수의 서버에 걸쳐서 데이터베이스의 관계를 정의할 수 있지만 매우 복잡하고 시간이 많이 소모된다.&lt;/li&gt;
-  &lt;li&gt;NoSQL로 구성된 데이터베이스는 수평적으로 확장된다. 많은 트래픽을 처리할 수 있도록 NoSQL 데이터베이스를 위한 서버를 추가적으로 구축할 수 있다는 의미다. 또한 저렴한 범용 하드웨어에 구축하거나 클라우드 기반의 인스턴스에 NoSQL 데이터베이스를 호스팅할 수 있어서 수직적 확장보다 비용 효율성이 높다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;sql과-nosql-중에서-어떤-것을-사용해야-하나요&quot;&gt;SQL과 NoSQL 중에서 어떤 것을 사용해야 하나요?&lt;/h2&gt;
-
-&lt;p&gt;데이터베이스를 구축하는 방법을 선택하는 것에 완벽한 솔루션은 없다. 그렇기 때문에 많은 개발자들은 서비스에 맞고 유저의 요구를 충족하기 위해 관계형, 비관계형 데이터베이스를 모두 사용한다. NoSQL 기반의 비관계형 데이터베이스가 확장성이나 속도에서 뛰어나다고 해도 고차원으로 구조화된 SQL 기반의 데이터베이스가 더 좋은 성능을 보여주기도 한다. 여러 사용 사례를 살펴보고 적절한 데이터베이스를 선택하는 것이 중요하다.&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 25px&quot;&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;sql-기반의-관계형-데이터베이스를-사용하는-케이스&quot;&gt;SQL 기반의 관계형 데이터베이스를 사용하는 케이스&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;데이터베이스의 ACID 성질을 준수해야 하는 경우&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;ACID는 Atomicity, Consistency, Isolation, Durability 를 가리킨다. 각 단어는 데이터베이스 내에서 일어나는 하나의 상태 변화 수행(transaction)에 안전성을 보장하기 위해 필요한 성질이다. SQL을 사용하여 데이터베이스와 상호 작용하는 방식을 정확하게 규정할 수 있기 때문에 이상 징후를 줄이고, 데이터베이스의 무결성을 보호할 수 있다. &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;전자 상거래, 금융 서비스를 위한 소프트웨어 개발에서는 데이터베이스의 ACID 성질을 잘 준수해주는 것이 필수 옵션으로 되어있기 때문에 SQL을 이용한 관계형 데이터베이스를 사용한다. &lt;br /&gt;&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 20px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;소프트웨어에 사용되는 데이터가 구조적이고 일관적인 경우&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;소프트웨어(프로젝트)의 규모가 많은 서버를 필요로 하지 않고, 일관된 데이터를 사용하는 경우, 보통 관계형 데이터베이스를 사용한다. 이런 경우 다양한 데이터 유형과 높은 트래픽을 지원하도록 설계된 NoSQL 데이터베이스를 굳이 사용할 이유가 없다.&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 25px&quot;&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;nosql-기반의-비관계형-데이터베이스를-사용하는-케이스&quot;&gt;NoSQL 기반의 비관계형 데이터베이스를 사용하는 케이스&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;데이터의 구조가 거의 또는 전혀 없는 대용량의 데이터를 저장하는 경우&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;대부분의 NoSQL 데이터베이스는 저장할 수 있는 데이터 유형에 제한을 설정하지 않는다. 필요에 따라서 데이터의 새 유형을 추가할 수 있다. 그렇기 때문에 소프트웨어 개발에 정형화 되지 않은 많은 양의 데이터가 필요한 경우, NoSQL을 적용하는 것이 효율적일 수 있다.&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 20px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;클라우드 컴퓨팅 및 저장공간을 최대한 활용하는 경우&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;클라우드 기반으로 데이터베이스 저장소를 구축하면 저렴한 비용의 솔류션을 제공 받을 수 있다. 소프트웨어에 데이터베이스의 확장성이 중요하다면 여러 데이터 센터에 걸쳐서 많은 번거로움 없이 확장할 수 있는 NoSQL 데이터베이스를 사용하는 것이 좋다.&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 20px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;빠르게 서비스를 구축하고 데이터 구조를 자주 업데이트 하는 경우&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;NoSQL 데이터베이스의 경우 스키마를 미리 준비할 필요가 없기 때문에 빠르게 개발하는 과정에 매우 유용하다. 시장에 빠르게 프로토타입을 출시해야 하는 경우가 해당할 수 있다. 또한 소프트웨어 버전별로 많은 다운타임 없이 데이터 구조를 자주 업데이트 해야하는 경우, 관계형 데이터베이스는 스키마 수정 등으로 많은 어려움이 있다. 그럴때 NoSQL 기반의 비관계형 데이터베이스를 사용하면 좋다.&lt;/p&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;참고한 레퍼런스&lt;/code&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/ko/nosql/document/&quot;&gt;문서형 데이터베이스&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://mommoo.tistory.com/62&quot;&gt;데이터베이스 트랜젝션&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="backend" /><category term="database" /><summary type="html">목차</summary></entry></feed>
+&lt;p style=&quot;display: block; margin-top: 0px; margin-bottom: 32px&quot;&gt; &lt;/p&gt;</content><author><name>hankyeolk</name></author><category term="book" /><summary type="html">가벼운 독서 감상</summary></entry></feed>
