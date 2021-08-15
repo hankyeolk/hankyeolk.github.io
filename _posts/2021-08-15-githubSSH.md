@@ -74,7 +74,7 @@ macOS에는 기본적으로 `ssh-keygen`이라고 하는 프로그램이 있다.
 
 등록을 완료했다면 로컬 터미널에서 `$ ssh -T git@github.com` 명령어로 SSH 방식의 인증이 잘 되었는지 확인할 수 있다.
 
-<img src="/img/posts/210815/2.png" style="width: 50%; text-align: center; border: 1px solid gray;"/> <br />
+<img src="/img/posts/210815/2.png" style="width: 100%; text-align: center; border: 1px solid gray;"/> <br />
 
 <p style="display: block; margin-top: 0px; margin-bottom: 45px" > </p>
 
