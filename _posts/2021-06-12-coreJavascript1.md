@@ -58,7 +58,7 @@ obj2.c = 10; // 객체 변수 영역의 주소는 동일하지만 c의 데이터
 // obj1 === obj2
 ```
 
-![data-duplicate](../img/posts/core-javascript/data-duplicate.png)
+<img src="/img/posts/core-javascript/data-duplicate.png" style="width: 80%; text-align: center; border: 1px solid gray;"/> <br />
 
 참조형 데이터가 '가변값'이라고 설명하기 위해서는 참조형 데이터 자체의 주소를 변경하는 경우가 아니라 그 내부의 프로퍼티 값들에 대한 주소를 변경할 때에만 성립한다.
 
