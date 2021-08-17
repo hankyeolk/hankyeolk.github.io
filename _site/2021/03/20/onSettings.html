@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    혹시라도 누군가가 새로운 맥(Mac)을 사준다면.. - HK Blog
+    
+  </title>
+
+  <meta name="description" content="저의 개발 환경은 다음과 같습니다. 사이드 및 공부 : MacBook-Pro-16 2019, Big Sur 11.1 업무 : MacBook-Pro-13 2020, Catalina 10.15.7 집에서 가지고 놀기 : Mac Mini M1, Big Sur 11.1 이번 블로그는 인텔...">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- google analytics setting -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-134593008-1");
+  </script>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://hankyeolk.github.io/2021/03/20/onSettings.html">
+  <link rel="alternate" type="application/rss+xml" title="HK Blog" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">HK Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/posts/post-review.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>혹시라도 누군가가 새로운 맥(Mac)을 사준다면..</h1>
+            
+            <h2 class="subheading">앱등이🐛의 맥북 세팅, 도화지에서 개발모드로 (맥도날드 아닙니다)</h2>
+            
+            <span class="meta">
+              <a href="#">hankyeolk</a>
+              
+            </span>
+            <div class="tag-wrapper">
+              
+              
+              
+              <a href="/posts/?tag=etc">
+                <span class="tag">ETC ⚙️</span>
+              </a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <blockquote>
+  <p>저의 개발 환경은 다음과 같습니다. <br />
+사이드 및 공부 : MacBook-Pro-16 2019, Big Sur 11.1 <br />
+업무 : MacBook-Pro-13 2020, Catalina 10.15.7 <br />
+집에서 가지고 놀기 : Mac Mini M1, Big Sur 11.1 <br />
+이번 블로그는 인텔 기반의 맥을 대상으로 합니다!</p>
+</blockquote>
+
+<p><br /></p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="before-개발-공부">Before 개발 공부</h3>
+
+<p>대학생 시절 사용했던 맥북프로에서 ‘터미널앱(terminal)’을 열어볼 일이 딱 한 번 있었다. 맥북을 나보다 일찍부터 사용했던 친누나와 함께 카페에서 공부를 할 때였다. 우연하게 누나 맥북을 봤는데, 런치패드에 앱 아이콘들이 작은 크기로 오밀조밀하게 잘 배치가 된 모습을 마주하고 내 것에도 해달라고 한 것이 그 시작이었다. 누나는 자연스럽게 터미널앱을 열더니 몇 가지 명령어(?)를 입력하고는 트랙패드에서 다섯 손가락을 오므렸다. 나의 맥북 런치패드도 동일하게 앱 아이콘들이 작은 크기로 오밀조밀 잘 모여있었다. 신선한 충격 뒤로는 터미널을 열기까지 아마 2년은 걸린 것 같다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p><img src="/img/posts/210320/launchpad.png" style="width: 100%; border: 1px solid gray;" /> <br /></p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>위의 사진처럼 내가 새로운 맥을 사거나 또는 누군가에게 받으면 가장 먼저하는 일이 런치패드의 아이콘 사이즈를 줄이는 것이다. 디폴트로는 앱 아이콘들이 나에게는 너무 크다고 판단되어서 조금 귀찮지만 가장 먼저 해준다. 이렇게 만드는 방법은 아래의 명령어를 터미널앱에서 순서대로 입력하면 된다. <code class="language-plaintext highlighter-rouge">rows</code>는 런치패드에 격자를 나눈다고 했을때 생성할 행의 갯수다. <code class="language-plaintext highlighter-rouge">columns</code>는 반대로 열의 갯수를 의미한다. 사진에서 보면, 한 줄(행)에 7개의 앱 아이콘이 배치된 것을 알 수 있다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>defaults write com.apple.dock springboard-rows <span class="nt">-int</span> 12
+<span class="nv">$ </span>defaults write com.apple.dock springboard-columns <span class="nt">-int</span> 7
+<span class="nv">$ </span>killall dock
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>github을 알기 시작하고 jekyll과 jQuery로 블로그를 만들 때 다시 터미널을 열어야 했다. homebrew(홈브루)<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>로 루비를 설치하고 git을 연결해주는 작업만 정말 하루 종일 검색하면서 진행했었다. 블로그를 구축한 다음에도 git 명령어를 통해서 포스팅하는 작업을 위해 터미널을 열었었다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="이-블로그를-쓰는-목적">이 블로그를 쓰는 목적</h3>
+
+<p>개발 공부를 시작하고 나서는 더 많은 것들을 맥에 세팅해주어야 했다. 이 설정들은 지금도 새로운 맥을 얻게 된다면 개발 환경 구축을 위해서 매번 해준다. 사실 이 블로그를 작성하는 가장 주요한 목적이 지금부터다. 매번 까먹기 때문에 더 이상의 검색을 하지 않고 바로 블로그로 확인하기 위해서!</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="1-iterm2-설치와-homebrew-oh-my-zsh-설정">1. Iterm2 설치와 Homebrew, oh-my-zsh 설정</h3>
+
+<p>그렇다. 맥에서 기본적으로 제공하는 터미널앱은 이제 이쁘지가 않다. 나는 <a href="https://iterm2.com/">Iterm2</a>를 사용한다. macOS 10.14 버전 이상부터 지원하는 터미널앱이고 다양한 테마를 사용할 수 있다! (쑤아리-📣) 그리고 다양한 개발 프로그램을 설치할 수 있게 도와주는 Homebrew를 설치한다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>Homebrew 설치 전에 Iterm2를 실행시키면 똑똑한 맥이 auto-install을 통해서 개발환경을 구축하냐고 묻는다. 그때 확인 버튼을 누르면 xcode와 관련된 설치가 진행된다. (xcode 자체를 설치하는 것은 아니다!) 그런데, 중고로 맥을 사면 이 auto-install 팝업이 뜨지 않는 것도 같았다. 그럴때는, <code class="language-plaintext highlighter-rouge">$ xcode-select --install</code>로 개발 환경을 구축할 수 있다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p><a href="https://brew.sh/">Homebrew</a>는 공식문서 가장 상단에 설치 코드가 있다. 그 코드를 복사해서 터미널에 붙여넣으면 끝난다. M1칩이 들어간 맥미니에서 Homebrew를 설치할 때 애를 먹긴했다. 로제타로 우회해서 설치하고 나중에 nvm 설정을 잡아줄 때도.. 우선 M1에 대한 내용은 다음에 정리하기로 하자.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>Homebrew 설치가 완료되면 이제 Iterm에 새로운 옷을 입혀줘야 한다. Homebrew를 굳이 먼저 설치할 필요는 없지만, wget을 사용할 것이라면 있는 것이 좋다. wget은 url을 기반으로 파일을 다운받는 프로그램이다. wget을 이용해서 Iterm에 <a href="https://ohmyz.sh/#install">OH-MY-ZSH</a>를 한다. 역시 공식문서에 설치 관련 설명이 잘 되어있다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>wget
+<span class="nv">$ </span>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh <span class="nt">-O</span> -<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="2-oh-my-zsh에-이쁜-테마-입히기">2. oh-my-zsh에 이쁜 테마 입히기</h3>
+
+<p>oh-my-zsh는 정말 다양한 테마를 제공한다. 그 중에서 나는 <code class="language-plaintext highlighter-rouge">agnoster</code>나 <code class="language-plaintext highlighter-rouge">fletcherm</code>을 사용하는데 정말 다양한 <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">테마</a>가 있기 때문에 맘에 드는 것을 찾아서 사용하면 된다. 테마 변경은 <code class="language-plaintext highlighter-rouge">~/.zshrc</code> 파일에 있는 <code class="language-plaintext highlighter-rouge">ZSH_THEME="여기에 원하는 테마를 입력하세요"</code>에 반영하면 된다. 구글에 검색하면 정말 많은 oh-my-zsh 테마를 다루는 방법을 찾을 수 있다. 😀</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano ~/.zshrc
+<span class="nv">$ ZSH_THEME</span><span class="o">=</span><span class="s2">"fletcherm"</span>
+
+<span class="c"># 반영한 다음에는 ctrl + x -&gt; ctrl + y -&gt; enter 로 저장하고 나온다!</span>
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="3-vscode-설치하고-path-설정에서-code-명령어-먹이기">3. VSCode 설치하고 Path 설정에서 code 명령어 먹이기</h3>
+
+<p>역시 그렇다. VSCode를 주력 에디터로 사용하면 모든 문서, 코드 작업을 거기서 하게된다. <a href="https://code.visualstudio.com/">VSCode</a>를 설치하고 열어서 <code class="language-plaintext highlighter-rouge">cmd shift P</code>를 누르면 어떤 검색창 같은 것이 에디터 상단에 나온다. 그 검색창에서 <code class="language-plaintext highlighter-rouge">path</code>를 입력하면 터미널창에서 <code class="language-plaintext highlighter-rouge">code .</code> 명령어로 VSCode를 열수 있게 등록하는 액션이 나오는 것을 경험할 수 있다. (아래 사진 참고!)</p>
+
+<p><img src="/img/posts/210320/vscode.png" style="width: 100%; border: 1px solid gray;" /> <br /></p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="4-git-alias-등록하고-git-editor-기본-설정하기">4. Git Alias 등록하고 git, editor 기본 설정하기</h3>
+
+<p>Iterm으로 주로 git 명령어를 많이 활용한다. 그 과정에서 <code class="language-plaintext highlighter-rouge">git commit -m</code> 등과 같은 길고 번거로운 명령어를 매번 입력하기 귀찮아서 oh-my-zsh에 등록해서 사용중이다. <code class="language-plaintext highlighter-rouge">code . ~/.zshrc</code>를 입력해서 VSCode에서 쉽게 zsh 설정을 변경해주자.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># .zshrc 파일</span>
+
+<span class="nb">alias </span><span class="nv">gl</span><span class="o">=</span><span class="s2">"git log --graph --decorate --oneline --all"</span>
+<span class="nb">alias </span><span class="nv">gs</span><span class="o">=</span><span class="s2">"git status"</span>
+<span class="nb">alias </span><span class="nv">c</span><span class="o">=</span><span class="s2">"clear"</span>
+<span class="nb">alias </span><span class="nv">mysql</span><span class="o">=</span><span class="s2">"mysql -u root -p"</span>
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>주로 위의 단축형 alias를 설정한다. 더 많지만 다 적기에는 너무 커스텀화 되어 있어서 소개하기 애매했다. 파일에 등록한 alias는 Iterm2에서 <code class="language-plaintext highlighter-rouge">source ~/.zshrc</code> 명령어를 입력해서 적용해 줄 수 있다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>그 다음에 내 컴퓨터에서 버전 관리를 목적으로 사용하는 git과 터미널에서 사용할 에디터의 기본값을 설정해준다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> user.name <span class="s2">"hankyeolk"</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> user.email <span class="s2">"email@email.com"</span>
+<span class="nv">$ </span>git config <span class="nt">--glboal</span> core.editor <span class="s2">"nano"</span>
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<h3 id="5-nvm으로-nodejs를-설치해주면-끗">5. NVM으로 Node.js를 설치해주면 끗!</h3>
+
+<p>나는 Node.js를 활용해서 웹 개발을 하는 개발자다. 그렇기 때문에 Node의 버전을 쉽게 관리하도록 도와주는 NVM의 설치는 필수적이다. NVM 역시 wget으로 손쉽게 설치할 수 있다. 아래의 코드로 설치가 잘 된다면 <code class="language-plaintext highlighter-rouge">nvm --version</code> 명령어를 입력했을 때 하단에 버전이 잘 뜰 것이다!</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>wget <span class="nt">-qO-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>그런데 종종 nvm을 설치하다 보면 설치 도중에 <code class="language-plaintext highlighter-rouge">nvm is already installed</code>라고 하는 벼락과 같은 문구가 뜰 수 있다. 그럴때는 당황하지 말고 아래의 방법을 시도해보자! nvm에 대한 설정이 export 되지 않아서 발생하는 경우가 거의 대부분이다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano ~/.zshrc
+
+<span class="c"># nano</span>
+<span class="nb">export </span><span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="k">${</span><span class="nv">XDG_CONFIG_HOME</span><span class="p">-</span><span class="k">}</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">printf</span> %s <span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.nvm"</span> <span class="o">||</span> <span class="nb">printf</span> %s <span class="s2">"</span><span class="k">${</span><span class="nv">XDG_CONFIG_HOME</span><span class="k">}</span><span class="s2">/nvm"</span><span class="si">)</span><span class="s2">"</span>
+<span class="o">[</span> <span class="nt">-s</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh"</span>
+
+<span class="c"># ctrl + x -&gt; ctrl + y -&gt; enter</span>
+</code></pre></div></div>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 18px"> </p>
+
+<p>NVM이 잘 설치됐다면, <code class="language-plaintext highlighter-rouge">nvm install 14.16.0</code> 등의 방식으로 Node.js를 설치하고 사용하면 된다. 나는 보통 LTS 버전을 우선적으로 설치하고 그 다음에 Current 버전을 설치해서 사용한다. 개발은 Current 버전을 이용한다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 48px"> </p>
+
+<p>새로운 맥을 어떻게든 얻게된다면 더 이상 찾아보는 수고를 하지 않고 이 블로그를 참고해야겠다. 새로운 맥이 언제 생길지 모르겠지만 그렇게 하자! 😆</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 48px"> </p>
+
+<hr />
+
+<p style="display: block; margin-top: 0px; margin-bottom: 25px"> </p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>mac os에서 사용하는 패키지 매니저. GUI의 도움 없이 프로그램을 설치하고 제거할 수 있게 도와주는 역할을 한다. 웹상에서 존재하는 운영체제에 맞게 제작된 프로그램을 내 컴퓨터에 쉽게 설치하기 위해 도와준다. 맥에서는 homebrew가 그 패키지 매니저 역할을 한다. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+        <hr>
+
+          <script src="https://utteranc.es/client.js"
+            repo="hankyeolk/hankyeolk.github.io"
+            issue-term="pathname"
+            label="comments"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async>
+            </script>
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left"
+            href="/2021/02/27/databaseExpedition.html" data-toggle="tooltip"
+            data-placement="top" title="원정대를 성공적(?)으로 마무리하면서.">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/2021/04/08/book-productOwner.html"
+            data-toggle="tooltip" data-placement="top" title="📚 프로덕트 오너(Product Owner)를 읽고">Next<span
+              class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:2247han@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/hankyeolk">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://instagram.com/">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://rocketpunch.com/@2247han">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
+              </span>
+              
+            </a>
+          </li>
+          
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; hankyeolk 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/tags.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134593008-1');
+</script>
+
+
+
+</body>
+
+</html>

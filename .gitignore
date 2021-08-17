@@ -2,3 +2,6 @@
 .vscode
 .jekyll-cache/
 node_modules
+
+./_site/
+_site

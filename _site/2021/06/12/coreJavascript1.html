@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [시리즈 - 코어 자바스크립트] 자바스크립트 데이터 타입 - HK Blog
+    
+  </title>
+
+  <meta name="description" content="이 블로그 콘텐츠에는 책 ‘코어 자바스크립트’를 읽고 자바스크립트를 깊게 이해하는 내용이 담깁니다.">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- google analytics setting -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-134593008-1");
+  </script>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://hankyeolk.github.io/2021/06/12/coreJavascript1.html">
+  <link rel="alternate" type="application/rss+xml" title="HK Blog" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">HK Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/posts/post-dev.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>[시리즈 - 코어 자바스크립트] 자바스크립트 데이터 타입</h1>
+            
+            <h2 class="subheading">내실을 다지는 자바스크립트 공부</h2>
+            
+            <span class="meta">
+              <a href="#">hankyeolk</a>
+              
+            </span>
+            <div class="tag-wrapper">
+              
+              
+              
+              <a href="/posts/?tag=js">
+                <span class="tag">Javascript</span>
+              </a>
+              
+              
+              
+              <a href="/posts/?tag=series">
+                <span class="tag">Series 🔖</span>
+              </a>
+              
+              
+              
+              <a href="/posts/?tag=book">
+                <span class="tag">Book 📚</span>
+              </a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <blockquote>
+  <p>이 블로그 콘텐츠에는 책 ‘코어 자바스크립트’를 읽고 자바스크립트를 깊게 이해하는 내용이 담깁니다.</p>
+</blockquote>
+
+<h3 id="자바스크립트의-데이터-타입">자바스크립트의 데이터 타입</h3>
+
+<p>자바스크립트의 데이터 타입은 크게 2가지가 있다. 기본형(primitive)과 참조형(reference) 타입이다. 타입을 구분하는 기준에 대해서 명확하게 아는 것이 중요하다. 두 타입 모두 무언가를 <strong>‘복제’</strong>하긴 한다.<br /></p>
+
+<p>기본형 타입은 값이 담긴 주소의 값을 바로 복제한다. 그리고 기본형은 불변성(immutability)을 띈다. 기본형에는 <code class="language-plaintext highlighter-rouge">Number, String, Boolean, null, undefined, Symbol</code>이 있다. Symbol 타입은 ES6 이후에 등장했다. <br /></p>
+
+<p>참조형 타입은 값이 담긴 주소의 값들로 이루어진 묶음의 주소 값을 복제한다. 참조형에는 <code class="language-plaintext highlighter-rouge">Object</code>가 있고 객체 아래에 <code class="language-plaintext highlighter-rouge">Array, Function, Date, RegExp, Map, Set</code>이 속한다. 객체 하위 분류에 해당한다.</p>
+
+<p><br /></p>
+
+<h3 id="식별자와-변수">식별자와 변수</h3>
+
+<p>모든 데이터는 바이트(8비트) 단위의 식별자를 통해서 서로 구분하고 연결할 수 있다. <strong>식별자는 우리가 잘 아는 ‘변수명’이다. 더 정확하게는 메모리 주솟값</strong>이다. 변수는 말 그대로 변할 수 있는 값이고 숫자형, 문자열, 객체, 배열 등 모든 데이터 형식을 의미한다. <br /></p>
+
+<p>하나의 변수명(식별자)을 선언하면 메모리에 해당 변수명을 위한 공간이 생긴다. 변수명은 그 메모리를 고유하게 인식하게 만드는 식별자인 것이다. 변수명에는 할당된 값을 직접적으로 저장하는 것이 아니라 값이 할당된 메모리 주소를 기록하게 된다.</p>
+
+<p><br /></p>
+
+<h3 id="불변값-가변값-복사">불변값, 가변값, 복사</h3>
+
+<p>위에서 자바스크립트의 기본형 데이터 타입은 값이 변하지 않는 불변성을 띈다고 말했다. 변수에 새로운 값을 할당하려고 하면 메모리에 새로운 데이터 공간을 만들어서 저장하고 그 데이터 공간의 주소를 변수명에 변경해준다. 완전히 새로운 값의 주소를 반영해주는 것이다. 그래서 <strong>‘불변’한다</strong>고 표현한다. 한 번 만들어진 기본형 데이터 값은 새로 만드는 동작을 통해서만 변경을 진행한다. <br /></p>
+
+<p>참조형 데이터는 무언가 ‘가변값’일 것 같다. 참조형 데이터를 컴퓨터가 어떻게 처리하는지 아래의 아주 간단한 코드를 뜯어보면서 알아보자. <br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<ol>
+  <li>특정 주소에 <code class="language-plaintext highlighter-rouge">obj</code>라고 하는 식별자 주소를 만든다. 이 변수명에 담길 프로퍼티가 여러개라는 것을 인식하게 된다.</li>
+  <li>다양한 프로퍼티의 변수를 인식할 새로운 변수 영역 주소를 새롭게 생성한다. 여기서는 <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>에 대한 부분을 위한 주소값 생성이다.</li>
+  <li>그리고 <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">string</code>을 저장할 데이터 영역 주소를 따와서 프로퍼티 변수 주소에 반영해준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">obj</code> 주소에는 프로퍼티 변수들의 주소값이 할당된 주소를 반영해준다.</li>
+</ol>
+
+<p>복사에서도 기본형과 참조형은 차이를 보인다. 결론부터 이야기하면 기본형과 참조형 모두 ‘주소를 참조’한다. 다만, 기본형을 복사하여 값을 변경하면 ‘주소’가 새롭게 변경되는 것이고 참조형을 복사하여 내부 프로퍼티의 값을 변경하면 내부값을 담고 있는 주소는 변경되지 않지만 내부의 저장된 값의 주소들이 변경되는 것이다. 결국 참조형의 복사는 그릇의 주소가 변경되지 않기 때문에 기본적인 복사로는 불변성을 지킬 수 없다. <br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">// 동일한 데이터 영역 주소 참조</span>
+
+<span class="kd">let</span> <span class="nx">obj1</span> <span class="o">=</span> <span class="p">{</span> <span class="na">c</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="na">d</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span> <span class="p">};</span>
+<span class="kd">let</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="nx">obj1</span><span class="p">;</span> <span class="c1">// 동일한 객체 변수 영역 주소 참조</span>
+
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 완전하게 새로운 데이터 영역 주소 참조</span>
+<span class="nx">obj2</span><span class="p">.</span><span class="nx">c</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 객체 변수 영역의 주소는 동일하지만 c의 데이터 영역 주소만 변경된다.</span>
+
+<span class="c1">// a !== b</span>
+<span class="c1">// obj1 === obj2</span>
+</code></pre></div></div>
+
+<p><img src="/img/posts/core-javascript/data-duplicate.png" style="width: 80%; text-align: center; border: 1px solid gray;" /> <br /></p>
+
+<p>참조형 데이터가 ‘가변값’이라고 설명하기 위해서는 참조형 데이터 자체의 주소를 변경하는 경우가 아니라 그 내부의 프로퍼티 값들에 대한 주소를 변경할 때에만 성립한다.</p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+<p><img src="/img/posts/core-javascript.jpeg" style="width: 80%; text-align: center; border: 1px solid gray;" /> <br /></p>
+
+<p style="display: block; margin-top: 0px; margin-bottom: 32px"> </p>
+
+
+        <hr>
+
+          <script src="https://utteranc.es/client.js"
+            repo="hankyeolk/hankyeolk.github.io"
+            issue-term="pathname"
+            label="comments"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async>
+            </script>
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left"
+            href="/2021/04/08/book-productOwner.html" data-toggle="tooltip"
+            data-placement="top" title="📚 프로덕트 오너(Product Owner)를 읽고">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/2021/06/19/coreJavascript2.html"
+            data-toggle="tooltip" data-placement="top" title="[시리즈 - 코어 자바스크립트] 자바스크립트 실행 컨텍스트">Next<span
+              class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:2247han@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/hankyeolk">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://instagram.com/">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://rocketpunch.com/@2247han">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
+              </span>
+              
+            </a>
+          </li>
+          
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; hankyeolk 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/tags.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134593008-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134593008-1');
+</script>
+
+
+
+</body>
+
+</html>
