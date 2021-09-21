@@ -31,7 +31,7 @@
     "font-awesome": "4.7.0",
     "http-proxy": ">=1.18.1",
     "jquery": "3.5.1",
-    "object-path": ">=0.11.5",
+    "object-path": ">=0.11.8",
     "socket.io": ">=2.4.0",
     "startbootstrap-clean-blog": "5.0.9"
   },
