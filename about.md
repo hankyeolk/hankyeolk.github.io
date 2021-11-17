@@ -2,7 +2,7 @@
 layout: page
 title: 안녕하세요.
 description: 웹 개발자 강한결입니다.
-background: "/img/about-banner.png"
+background: '/img/about-banner.png'
 ---
 
 ## hello world 🖐
@@ -25,12 +25,12 @@ background: "/img/about-banner.png"
 <hr />
 <p style="display: block; margin-top: 0px;margin-bottom: 40px" > </p>
 
-#### 저는 이렇게 개발하고 있습니다.
+#### 저는 이렇게 개발하고 있습니다. (보수중 🛠)
 
 <p style="display: block; margin-top: 0px; margin-bottom: 12px" > </p>
 
 ```js
-const hk_stacks = stack => {
+const hk_stacks = (stack) => {
   switch (stack) {
     case 개발_언어:
       return `Javascript, Typescript`;
@@ -39,19 +39,15 @@ const hk_stacks = stack => {
       return `NPM, Webpack, Babel, ESLint, Jest`;
 
     case Front_End:
-      return `React, Vue, Redux, Styled-Components`;
+      return `React`;
 
     case Back_End:
-      return `Node.js, Express.js`;
+      return `Express, NestJS`;
 
-    case Database:
-      return `MySQL, Sequelize, MongoDB, Mongoose`;
-
-    case Deploy:
-      return `EC2, S3, RDS, Route53`;
+    case ORM:
+      return `Sequelize, TypeORM`;
 
     default:
-      return `Github, Notion, Slack, Sketch, Zeplin`;
   }
 };
 ```
@@ -66,6 +62,5 @@ const hk_stacks = stack => {
 
 - [🐈‍⬛ hankyeolk 깃허브](https://github.com/hankyeolk) <br />
 - [👶🏼 개발자 준비생 시절 블로그](https://dddoublek.github.io/TIL) <br />
-- [📖 개인 위키](https://www.notion.so/ddovblek/Javascript-Do-Something-d8d913babe0647e3ba507b05dbf66186)
 
 <p style="display: block; margin-top: 0px;margin-bottom: 40px" > </p>
