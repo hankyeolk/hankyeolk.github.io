@@ -187,7 +187,7 @@ _이 글을 작성하는 것도 특정 목표의 달성을 위한 세부 액션�
 내가 위에서 간략하게 기록한 각각의 데이터베이스가 포함된 노션 대시보드 템플릿을 만들었다. 이 글을 읽는 사람이 얼마나 될지는 모르겠지만 아래의 북마크(🥷)를 이용해서 편하게 개인 노션 계정에 복제해도 괜찮다.
 
 <div style="text-align: center; width: 40%; height 50px; background-color: #343a40; border: none; border-radius: 5px; box-shadow: rgb(24 25 31 / 15%) 0 6px 35px; cursor: pointer; padding: 5px">
-  <a style="font-weight: bold; color: #fab005; text-decoration: none;  line-height: 50px" href="https://bit.ly/hk_notion_templates" target="_blank">노션 대시보드 템플릿 훔쳐가기 🥷</a>
+  <a style="font-weight: bold; color: #fab005; text-decoration: none;  line-height: 50px" href="https://bit.ly/hk_templates_notion01" target="_blank">노션 대시보드 템플릿 훔쳐가기 🥷</a>
 </div>
 
 <p style="display: block; margin-top: 0px; margin-bottom: 60px" > </p>
