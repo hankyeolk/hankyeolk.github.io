@@ -32,12 +32,12 @@
     "http-proxy": ">=1.18.1",
     "jquery": "3.5.1",
     "object-path": ">=0.11.8",
-    "socket.io": ">=2.4.0",
+    "socket.io": ">=4.5.3",
     "startbootstrap-clean-blog": "5.0.9",
     "glob-parent": ">=5.1.2"
   },
   "devDependencies": {
-    "browser-sync": "2.26.7",
+    "browser-sync": "2.27.10",
     "gulp": "4.0.2"
   }
 }
