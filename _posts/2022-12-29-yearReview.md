@@ -37,7 +37,7 @@ tags: [blog, review]
 
 #### 올해의 콘텐츠
 
-**올해의 노래 - 빅뱅 <봄여름가을겨울>**
+**올해의 노래 - 빅뱅 `<봄여름가을겨울>`**
 
 <p style="display: block; margin-top: 0px; margin-bottom: 24px" > </p>
 
